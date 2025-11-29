@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="login-box">
+    <h2>User Login</h2>
+
+    <input id="email" type="text" placeholder="Email">
+    <input id="password" type="password" placeholder="Password">
+
+    <button onclick="login()">Login</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="supabase.js"></script>
+
+<script>
+async function login() {
+    let email = document.getElementById("email").value;
+    let pass = document.getElementById("password").value;
+
+    let data = await loginUser(email, pass);
+    if (data) window.location.href = "user.html";
+}
+</script>
+
+</body>
+</html>

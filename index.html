@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uma Mahesh – Portfolio</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<header>
+    <img src="assets/profile.jpg" class="profile-photo">
+    <h1>Uma Mahesh Poluparthi</h1>
+    <p class="tagline">Multi-NDT PCN Level II Technician</p>
+</header>
+
+<section class="about-section">
+    <h2>About Me</h2>
+    <p>
+        Dedicated and detail-oriented Multi-NDT PCN Level II Technician with 3 years of experience in 
+        RTFI, MT, and PT. Skilled in radiographic interpretation, defect analysis, and ensuring compliance 
+        with international quality and safety standards.
+    </p>
+</section>
+
+<section class="section">
+    <h2>Technical Certifications</h2>
+    <ul>
+        <li>PCN RTFI Level II (350570)</li>
+        <li>PCN MT Level II (350570)</li>
+        <li>PCN PT Level II (350570)</li>
+        <li>R1 License (NEA – Singapore) R1/2023/10868</li>
+    </ul>
+</section>
+
+<section class="section">
+    <h2>Experience</h2>
+    <p><strong>A-Star Testing & Inspection (S) Pte. Ltd., Singapore</strong></p>
+    <p>Multi-NDT PCN Technician | Jun 2022 – June 2025</p>
+
+    <ul>
+        <li>Conducted RTFI, MT, and PT for industrial projects.</li>
+        <li>Performed radiograph analysis for defect detection.</li>
+        <li>Digitized and archived films using Delta 880, Array 2905, and others.</li>
+        <li>Prepared detailed inspection reports.</li>
+        <li>Maintained calibration and radiation safety protocols.</li>
+    </ul>
+</section>
+
+<section class="section">
+    <h2>Achievements</h2>
+    <div id="achievements"></div>
+</section>
+
+<footer>
+    <a href="login.html">User Login</a>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="supabase.js"></script>
+<script>
+async function loadAchievements() {
+    const data = await getAchievements();
+    const box = document.getElementById("achievements");
+    box.innerHTML = data.map(a => `<p>• ${a.text}</p>`).join("");
+}
+loadAchievements();
+</script>
+
+</body>
+</html>

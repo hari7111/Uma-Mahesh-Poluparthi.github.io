@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>User Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>Welcome User</h1>
+<p>Your achievements appear below:</p>
+
+<div id="achBox"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="supabase.js"></script>
+
+<script>
+async function load() {
+    let data = await getAchievements();
+    document.getElementById("achBox").innerHTML =
+        data.map(a => `<p>• ${a.text}</p>`).join("");
+}
+load();
+</script>
+
+</body>
+</html>
