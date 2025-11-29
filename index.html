@@ -5,6 +5,7 @@
 <title>Uma Mahesh – Portfolio</title>
 
 <link rel="stylesheet" href="style.css">
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
@@ -17,7 +18,7 @@
     <div class="loader"></div>
 </div>
 
-<!-- 🌙 DARK MODE BUTTON -->
+<!-- 🌙 DARK MODE TOGGLE -->
 <div class="dark-toggle" onclick="toggleDarkMode()">🌙</div>
 
 <!-- 🧭 NAVBAR -->
@@ -27,8 +28,8 @@
         <nav>
             <a href="#about">About</a>
             <a href="#experience">Experience</a>
-            <a href="#gallery">Gallery</a>
-            <a href="#certificates">Certificates</a>
+            <a href="#gallery-section">Gallery</a>
+            <a href="#certificates-section">Certificates</a>
             <a href="#contact">Contact</a>
         </nav>
     </div>
@@ -107,13 +108,13 @@
 </section>
 
 <!-- PHOTO GALLERY -->
-<section class="container" id="gallery" data-aos="zoom-in">
+<section class="container" id="gallery-section" data-aos="zoom-in">
     <h2 class="section-title">Photo Gallery</h2>
     <div class="gallery-grid" id="gallery"></div>
 </section>
 
 <!-- CERTIFICATES -->
-<section class="container" id="certificates" data-aos="zoom-in-up">
+<section class="container" id="certificates-section" data-aos="zoom-in-up">
     <h2 class="section-title">Certificates</h2>
     <div class="certificate-grid" id="certificates"></div>
 </section>
@@ -131,6 +132,7 @@
 
     <form action="https://formsubmit.co/umamahe113@gmail.com" method="POST" class="contact-form">
         <input type="hidden" name="_captcha" value="false">
+
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="email" name="email" placeholder="Your Email" required>
         <textarea name="message" placeholder="Message" required></textarea>
@@ -167,6 +169,7 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>AOS.init({ duration: 800 });</script>
 
+<!-- SUPABASE MUST BE VERSION 2 -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script src="supabase.js"></script>
@@ -174,7 +177,6 @@
 
 </body>
 </html>
-
 
 
 
