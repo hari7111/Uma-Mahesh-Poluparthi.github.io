@@ -103,3 +103,8 @@ function closeLightbox() {
     document.getElementById("lightbox").style.display = "none";
 }
 
+gallery.innerHTML += `
+    <div class="gallery-item" onclick="openLightbox('${url}')">
+        <img src="${url}">
+    </div>`;
+
