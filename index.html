@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uma Mahesh Poluparthi - Portfolio</title>
+    <title>Uma Mahesh | Portfolio</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
@@ -14,18 +14,13 @@
 
 <body>
 
-<!-- PRELOADER -->
-<div id="preloader">
-    <div class="loader"></div>
-</div>
-
 <!-- DARK MODE TOGGLE -->
-<div class="dark-toggle" onclick="document.body.classList.toggle('dark')">🌙</div>
+<div class="dark-toggle" onclick="toggleDarkMode()">🌙</div>
 
 <!-- NAVBAR -->
-<div id="navbar">
+<header id="navbar">
     <div class="nav-container">
-        <strong style="font-size:22px;">Portfolio</strong>
+        <h1 class="logo">Uma Mahesh</h1>
         <nav>
             <a href="#about">About</a>
             <a href="#gallery-section">Gallery</a>
@@ -34,29 +29,30 @@
             <a href="#contact">Contact</a>
         </nav>
     </div>
-</div>
+</header>
 
 <!-- HERO -->
 <section class="hero">
-    <img src="https://xzatttpouvlhqzbuwgmc.supabase.co/storage/v1/object/public/photos/profile.jpg"
-     class="profile-photo-large">
+    <img id="profile-photo" class="profile-photo-large" alt="Profile Photo">
+
     <h1 class="hero-title">Uma Mahesh Poluparthi</h1>
     <p class="hero-subtitle">Multi-NDT PCN Level II Technician</p>
-    <a href="assets/resume.pdf" class="btn-primary" download>Download CV</a>
+
+    <a id="resume-btn" class="btn-primary" download>Download CV</a>
 </section>
 
 <div class="container">
 
-    <!-- ABOUT SECTION -->
+    <!-- ABOUT -->
     <section id="about">
         <h2 class="section-title">About Me</h2>
         <p class="section-text">
-            Dedicated Multi-NDT PCN Level II Technician with 3+ years of experience in RTFI, MT, PT,
-            radiographic interpretation, defect analysis, and safety compliance.
+            Dedicated Multi-NDT PCN Level II Technician with over 3 years of hands-on experience
+            in RTFI, MT, PT, radiographic interpretation, defect analysis and safety compliance.
         </p>
     </section>
 
-    <!-- GALLERY SECTION -->
+    <!-- GALLERY -->
     <section id="gallery-section">
         <h2 class="section-title">Photo Gallery</h2>
         <div id="gallery" class="gallery-grid"></div>
@@ -65,22 +61,23 @@
     <!-- CERTIFICATES -->
     <section id="certificates">
         <h2 class="section-title">Certificates</h2>
-        <div class="certificate-grid">
-            <!-- You can add certificate images manually -->
-        </div>
+        <p class="coming-soon">Certificates upload coming soon…</p>
     </section>
 
     <!-- ACHIEVEMENTS -->
     <section id="achievements">
         <h2 class="section-title">Achievements</h2>
-        <div class="achievement-item">• 500 Radiographs Analyzed</div>
-        <div class="achievement-item">• 200 Inspections Completed</div>
-        <div class="achievement-item">• 3 Years Experience</div>
+
+        <div class="achievement-item">✔ 3+ Years Experience</div>
+        <div class="achievement-item">✔ 500+ Radiographs Analyzed</div>
+        <div class="achievement-item">✔ 200+ Inspections Completed</div>
+        <div class="achievement-item">✔ PCN Level II Certified</div>
     </section>
 
     <!-- CONTACT -->
     <section id="contact">
         <h2 class="section-title">Contact Me</h2>
+
         <div class="contact-form">
             <input type="text" placeholder="Your Name">
             <input type="email" placeholder="Your Email">
@@ -90,35 +87,16 @@
 
 </div>
 
-<!-- LIGHTBOX FOR GALLERY -->
-<div class="lightbox" id="lightbox">
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox">
     <img id="lightbox-img">
 </div>
 
-<!-- WHATSAPP FLOAT -->
-<a href="https://wa.me/916303078407" target="_blank" class="whatsapp-float">💬</a>
+<!-- WHATSAPP -->
+<a href="https://wa.me/918637202170" class="whatsapp-float">💬</a>
 
-<!-- JS -->
+<!-- SCRIPT -->
 <script src="script.js"></script>
-
-<script>
-// PRELOADER
-window.onload = () => {
-    document.getElementById("preloader").style.display = "none";
-};
-
-// LIGHTBOX
-document.addEventListener("click", e => {
-    if (e.target.classList.contains("gallery-image")) {
-        document.getElementById("lightbox-img").src = e.target.src;
-        document.getElementById("lightbox").style.display = "flex";
-    }
-    if (e.target.id === "lightbox") {
-        document.getElementById("lightbox").style.display = "none";
-    }
-});
-</script>
 
 </body>
 </html>
-
