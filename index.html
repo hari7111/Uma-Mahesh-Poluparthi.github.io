@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Uma Mahesh | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script defer src="script.js"></script>
 </head>
+
 <body>
 
-<!-- PRELOADER -->
+<!-- ================= PRELOADER ================= -->
 <div id="preloader">
     <div class="loader"></div>
 </div>
 
-<!-- NAVBAR -->
-<nav class="navbar">
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar glass-bg">
     <div class="logo">Portfolio</div>
+
     <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#gallery">Gallery</a></li>
@@ -25,66 +27,85 @@
         <li><a href="#contact">Contact</a></li>
     </ul>
 
-    <button id="darkToggle" class="dark-btn">🌙</button>
+    <button id="darkToggle" class="dark-toggle-btn">🌙</button>
 </nav>
 
-<!-- HERO SECTION -->
-<section class="hero">
-    <img src="https://raw.githubusercontent.com/Uma-Mahesh-Poluparthi/Uma-Mahesh-Poluparthi.github.io/main/assets/profile.jpg"
-         class="profile-photo" alt="Profile Photo">
+<!-- ================= HERO SECTION (H1) ================= -->
+<header class="hero">
+    <div class="hero-content">
 
-    <h1 class="hero-name">Uma Mahesh Poluparthi</h1>
-    <p class="hero-title">Multi-NDT PCN Level II Technician</p>
+        <img src="assets/profile.jpg" class="profile-photo" />
 
-    <a href="https://raw.githubusercontent.com/Uma-Mahesh-Poluparthi/Uma-Mahesh-Poluparthi.github.io/main/assets/resume.pdf"
-       class="btn-primary" download>Download CV</a>
-</section>
+        <h1 class="hero-name">Uma Mahesh Poluparthi</h1>
+        <p class="hero-title">Multi-NDT PCN Level II Technician</p>
 
-<!-- ABOUT -->
-<section id="about" class="section fade-in">
-    <h2>About Me</h2>
-    <p>
-        Dedicated Multi-NDT PCN Level II Technician with 3+ years of experience 
-        in RTFI, MT, PT, radiographic interpretation, defect analysis and safety compliance.
+        <a href="assets/resume.pdf" download class="btn-primary pulse">Download CV</a>
+    </div>
+</header>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" class="section glass-card fade-in">
+    <h2 class="section-title">About Me</h2>
+    <p class="section-text">
+        Dedicated Multi-NDT PCN Level II Technician with over 3 years of 
+        hands-on experience in RTFI, MT, PT, radiographic interpretation, 
+        defect analysis, and safety compliance.
     </p>
 </section>
 
-<!-- GALLERY -->
+<!-- ================= GALLERY ================= -->
 <section id="gallery" class="section fade-in">
-    <h2>Photo Gallery</h2>
-    <div class="gallery-grid" id="galleryBox">
-        <!-- Will load automatically from GitHub -->
+    <h2 class="section-title">Photo Gallery</h2>
+
+    <div id="galleryBox" class="gallery-grid glass-bg">
+        <!-- Auto loaded by JS -->
     </div>
 </section>
 
-<!-- CERTIFICATES -->
-<section id="certificates" class="section fade-in">
-    <h2>Certificates</h2>
-    <div class="cert-box">
-        <p>• PCN Level II – Radiographic Testing Film Interpretation</p>
-        <p>• Magnetic Particle Testing Level II</p>
-        <p>• Penetrant Testing Level II</p>
-    </div>
-</section>
-
-<!-- ACHIEVEMENTS -->
-<section id="achievements" class="section fade-in">
-    <h2>Achievements</h2>
-    <ul>
-        <li>500+ Radiographs Analyzed</li>
-        <li>200+ Inspections Completed</li>
-        <li>3+ Years Industry Experience</li>
+<!-- ================= CERTIFICATES ================= -->
+<section id="certificates" class="section glass-card fade-in">
+    <h2 class="section-title">Certificates</h2>
+    <ul class="cert-list">
+        <li>✔ PCN Level II — Radiographic Testing (RTFI)</li>
+        <li>✔ Magnetic Particle Testing — Level II</li>
+        <li>✔ Penetrant Testing — Level II</li>
     </ul>
 </section>
 
-<!-- CONTACT -->
-<section id="contact" class="section fade-in">
-    <h2>Contact Me</h2>
-    <p>Email: <strong>your-email@gmail.com</strong></p>
-    <p>Location: Hyderabad, India</p>
+<!-- ================= ACHIEVEMENTS ================= -->
+<section id="achievements" class="section glass-card fade-in">
+    <h2 class="section-title">Achievements</h2>
+
+    <div class="achieve-container">
+        <div class="achieve-box">
+            <h3 class="counter" data-target="500">0</h3>
+            <p>Radiographs Analyzed</p>
+        </div>
+
+        <div class="achieve-box">
+            <h3 class="counter" data-target="200">0</h3>
+            <p>Inspections Completed</p>
+        </div>
+
+        <div class="achieve-box">
+            <h3 class="counter" data-target="3">0</h3>
+            <p>Years Experience</p>
+        </div>
+    </div>
 </section>
 
-<footer>
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="section glass-card fade-in">
+    <h2 class="section-title">Contact Me</h2>
+
+    <p class="contact-text">📧 Email: <strong>your-email@gmail.com</strong></p>
+    <p class="contact-text">📍 Location: Hyderabad, India</p>
+
+    <a href="https://wa.me/918637202170" class="btn-whatsapp">💬 WhatsApp Me</a>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer glass-bg">
     © 2025 Uma Mahesh | All Rights Reserved
 </footer>
 
