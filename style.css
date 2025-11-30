@@ -1,6 +1,6 @@
-/* ---------------------------- */
-/* GLOBAL SETTINGS */
-/* ---------------------------- */
+/* ============================
+   GLOBAL SETTINGS
+============================ */
 * {
     margin: 0;
     padding: 0;
@@ -25,9 +25,9 @@ body.dark {
     margin: 50px auto;
 }
 
-/* ---------------------------- */
-/* PRELOADER */
-/* ---------------------------- */
+/* ============================
+   PRELOADER
+============================ */
 #preloader {
     position: fixed;
     inset: 0;
@@ -35,9 +35,8 @@ body.dark {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 999999;
+    z-index: 99999;
 }
-
 body.dark #preloader {
     background: #121212;
 }
@@ -55,9 +54,9 @@ body.dark #preloader {
     to { transform: rotate(360deg); }
 }
 
-/* ---------------------------- */
-/* DARK MODE TOGGLE */
-/* ---------------------------- */
+/* ============================
+   DARK MODE BUTTON
+============================ */
 .dark-toggle {
     position: fixed;
     top: 20px;
@@ -68,26 +67,24 @@ body.dark #preloader {
     border-radius: 50%;
     cursor: pointer;
     font-size: 20px;
-    z-index: 9999;
+    z-index: 10000;
 }
-
 body.dark .dark-toggle {
     background: #444;
 }
 
-/* ---------------------------- */
-/* NAVBAR */
-/* ---------------------------- */
+/* ============================
+   NAVIGATION BAR
+============================ */
 #navbar {
     position: fixed;
     top: 0;
     width: 100%;
     background: rgba(255,255,255,0.85);
     backdrop-filter: blur(10px);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     z-index: 9998;
 }
-
 body.dark #navbar {
     background: rgba(20,20,20,0.85);
 }
@@ -107,18 +104,17 @@ nav a {
     color: #3498db;
     text-decoration: none;
 }
-
 body.dark nav a {
     color: #6dd5fa;
 }
 
 nav a:hover {
-    color: #2179b5;
+    color: #1d78c8;
 }
 
-/* ---------------------------- */
-/* HERO SECTION */
-/* ---------------------------- */
+/* ============================
+   HERO SECTION
+============================ */
 .hero {
     text-align: center;
     padding: 120px 20px 80px;
@@ -130,15 +126,15 @@ nav a:hover {
     width: 170px;
     height: 170px;
     border-radius: 50%;
-    border: 6px solid #fff;
+    border: 6px solid white;
     object-fit: cover;
-    box-shadow: 0px 5px 18px rgba(0,0,0,0.3);
+    box-shadow: 0px 5px 20px rgba(0,0,0,0.3);
 }
 
 .hero-title {
-    margin-top: 20px;
     font-size: 35px;
     font-weight: 700;
+    margin-top: 20px;
 }
 
 .hero-subtitle {
@@ -149,25 +145,24 @@ nav a:hover {
 
 .btn-primary {
     background: white;
-    color: #3498db;
     padding: 12px 25px;
     border-radius: 30px;
-    font-weight: 600;
     text-decoration: none;
+    font-weight: 600;
+    color: #3498db;
 }
-
 .btn-primary:hover {
     background: #eaf6ff;
 }
 
-/* ---------------------------- */
-/* BASIC SECTIONS */
-/* ---------------------------- */
+/* ============================
+   SECTION HEADERS
+============================ */
 .section-title {
     font-size: 32px;
+    font-weight: 700;
     margin-bottom: 15px;
     text-align: center;
-    font-weight: 700;
 }
 
 .section-text {
@@ -175,12 +170,12 @@ nav a:hover {
     line-height: 1.6;
 }
 
-/* ---------------------------- */
-/* CARDS */
-/* ---------------------------- */
+/* ============================
+   CERTIFICATION CARDS
+============================ */
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
     gap: 20px;
 }
 
@@ -188,26 +183,24 @@ nav a:hover {
     background: white;
     padding: 20px;
     border-radius: 12px;
-    text-align: center;
     font-weight: 600;
+    text-align: center;
     border-left: 6px solid #3498db;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
 }
-
 body.dark .card {
     background: #1e1e1e;
 }
 
-/* ---------------------------- */
-/* EXPERIENCE */
-/* ---------------------------- */
+/* ============================
+   EXPERIENCE CARD
+============================ */
 .experience-card {
     background: white;
     padding: 25px;
     border-radius: 12px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    box-shadow: 0px 3px 12px rgba(0,0,0,0.1);
 }
-
 body.dark .experience-card {
     background: #1e1e1e;
 }
@@ -217,9 +210,9 @@ body.dark .experience-card {
     font-weight: 600;
 }
 
-/* ---------------------------- */
-/* GALLERY */
-/* ---------------------------- */
+/* ============================
+   GALLERY
+============================ */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
@@ -232,7 +225,6 @@ body.dark .experience-card {
     border-radius: 12px;
     overflow: hidden;
     cursor: pointer;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
 }
 
 .gallery-item img {
@@ -249,7 +241,7 @@ body.dark .experience-card {
     display: none;
     justify-content: center;
     align-items: center;
-    z-index: 999999;
+    z-index: 100000;
 }
 
 .lightbox img {
@@ -258,9 +250,9 @@ body.dark .experience-card {
     border-radius: 12px;
 }
 
-/* ---------------------------- */
-/* CERTIFICATES */
-/* ---------------------------- */
+/* ============================
+   CERTIFICATE GRID
+============================ */
 .certificate-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
@@ -272,27 +264,17 @@ body.dark .experience-card {
     border-radius: 12px;
 }
 
-/* ---------------------------- */
-/* ACHIEVEMENTS */
-/* ---------------------------- */
-.achievement-list {
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-}
-
-body.dark .achievement-list {
-    background: #1e1e1e;
-}
-
+/* ============================
+   ACHIEVEMENTS
+============================ */
 .achievement-item {
     margin: 8px 0;
     font-size: 17px;
 }
 
-/* ---------------------------- */
-/* STATS */
-/* ---------------------------- */
+/* ============================
+   STATS BOXES
+============================ */
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
@@ -304,22 +286,21 @@ body.dark .achievement-list {
     background: white;
     padding: 25px;
     border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0px 3px 12px rgba(0,0,0,0.1);
 }
-
 body.dark .stat-box {
     background: #1e1e1e;
 }
 
 .stat-num {
-    color: #3498db;
     font-size: 40px;
     font-weight: 700;
+    color: #3498db;
 }
 
-/* ---------------------------- */
-/* CONTACT */
-/* ---------------------------- */
+/* ============================
+   CONTACT FORM
+============================ */
 .contact-form {
     display: flex;
     flex-direction: column;
@@ -329,34 +310,33 @@ body.dark .stat-box {
 .contact-form input,
 .contact-form textarea {
     padding: 12px;
-    font-size: 17px;
     border-radius: 8px;
     border: 1px solid #ccc;
 }
 
-/* ---------------------------- */
-/* WHATSAPP FLOAT */
-/* ---------------------------- */
+/* ============================
+   WHATSAPP FLOATING BUTTON
+============================ */
 .whatsapp-float {
     position: fixed;
     bottom: 25px;
     right: 25px;
     background: #25D366;
     color: white;
-    font-size: 30px;
-    padding: 12px 15px;
+    font-size: 28px;
+    padding: 14px 16px;
     border-radius: 50%;
     text-decoration: none;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
     z-index: 9999;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
 }
 
-/* ---------------------------- */
-/* FOOTER */
-/* ---------------------------- */
+/* ============================
+   FOOTER
+============================ */
 footer {
     background: #222;
-    padding: 25px;
+    padding: 20px;
     color: white;
     text-align: center;
     margin-top: 40px;
@@ -366,5 +346,3 @@ footer {
     color: #6dd5fa;
     text-decoration: none;
 }
-
-
