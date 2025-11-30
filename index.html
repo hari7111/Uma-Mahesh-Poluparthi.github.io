@@ -1,95 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uma Mahesh | Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
-    <header class="navbar">
-        <div class="logo">Portfolio</div>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#gallery">Gallery</a>
-            <a href="#certificates">Certificates</a>
-            <a href="#achievements">Achievements</a>
-            <a href="#contact">Contact</a>
-        </nav>
+<!-- 🌟 Scroll Progress Bar -->
+<div id="scroll-progress"></div>
 
-        <button id="theme-toggle" class="theme-toggle">🌙</button>
-    </header>
+<!-- 🌙 Navbar -->
+<nav class="navbar">
+    <div class="logo">Portfolio</div>
+    <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#gallery-section">Gallery</a></li>
+        <li><a href="#certificates">Certificates</a></li>
+        <li><a href="#achievements">Achievements</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button id="themeToggle">🌙</button>
+</nav>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <img src="assets/profile.jpg" class="profile-photo" alt="Profile Photo" />
+<!-- 🌟 HERO SECTION -->
+<section class="hero">
+    <img src="assets/profile.jpg" class="profile-pic floating" alt="Profile Photo">
 
-        <h1>Uma Mahesh Poluparthi</h1>
-        <p class="subtitle">Multi-NDT PCN Level II Technician</p>
+    <h1 class="hero-title">Uma Mahesh Poluparthi</h1>
 
-        <a href="assets/resume.pdf" download class="btn-primary">Download CV</a>
-    </section>
+    <h2 class="hero-subtitle">
+        <span id="typing"></span>
+    </h2>
 
-    <!-- ABOUT -->
-    <section id="about" class="section">
-        <h2>About Me</h2>
-        <p>
-            Dedicated Multi-NDT PCN Level II Technician with 3+ years of experience in RTFI, 
-            MT, PT, radiographic interpretation, defect analysis, and safety compliance.
-        </p>
-    </section>
+    <a href="assets/resume.pdf" download class="btn-primary">Download CV</a>
 
-    <!-- GALLERY -->
-    <section id="gallery" class="section">
-        <h2>Photo Gallery</h2>
-
-        <div class="gallery-grid" id="gallery-grid"></div>
-            <img src="assets/gallery/1.jpg" />
-            <img src="assets/gallery/2.jpg" />
-            <img src="assets/gallery/3.jpg" />
-            <img src="assets/gallery/4.jpg" />
-            <img src="assets/gallery/5.jpg" />
-            <img src="assets/gallery/6.jpg" />
+    <!-- Counters -->
+    <div class="counter-section">
+        <div class="counter-box">
+            <h2><span class="counter" data-target="3">0</span>+</h2>
+            <p>Years Experience</p>
         </div>
-    </section>
 
-    <!-- CERTIFICATES -->
-    <section id="certificates" class="section">
-        <h2>Certificates</h2>
-        <ul>
-            <li>PCN-RTFI Level II – Radiographic Testing Film Interpretation</li>
-            <li>Magnetic Particle Testing Level II</li>
-            <li>Penetrant Testing Level II</li>
-        </ul>
-    </section>
+        <div class="counter-box">
+            <h2><span class="counter" data-target="500">0</span>+</h2>
+            <p>Radiographs Analyzed</p>
+        </div>
 
-    <!-- ACHIEVEMENTS -->
-    <section id="achievements" class="section">
-        <h2>Achievements</h2>
-        <ul>
-            <li>500+ Radiographs Analyzed</li>
-            <li>200+ Inspections Completed</li>
-            <li>3+ Years Industrial Experience</li>
-        </ul>
-    </section>
+        <div class="counter-box">
+            <h2><span class="counter" data-target="200">0</span>+</h2>
+            <p>Inspections Completed</p>
+        </div>
+    </div>
+</section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="section">
-        <h2>Contact Me</h2>
-        <p>Email: <a href="mailto:umamahi@gmail.com">umamahi@gmail.com</a></p>
-        <p>Location: Hyderabad, India</p>
-    </section>
+<!-- 📌 ABOUT -->
+<section id="about" class="section">
+    <h2 class="section-title">About Me</h2>
+    <p class="section-text">
+        Dedicated Multi-NDT PCN Level II Technician with 3+ years of experience in RTFI, MT, PT, radiographic interpretation, defect analysis and safety compliance.
+    </p>
+</section>
 
+<!-- 🖼️ GALLERY -->
+<section id="gallery-section" class="section">
+    <h2 class="section-title">Photo Gallery</h2>
+    <div id="gallery" class="gallery-grid"></div>
+</section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        © 2025 Uma Mahesh Poluparthi — All Rights Reserved
-    </footer>
+<!-- 📜 CERTIFICATES -->
+<section id="certificates" class="section">
+    <h2 class="section-title">Certificates</h2>
+    <ul>
+        <li>PCN Level II – Radiographic Testing Film Interpretation</li>
+        <li>Magnetic Particle Testing Level II</li>
+        <li>Penetrant Testing Level II</li>
+    </ul>
+</section>
+
+<!-- 🏆 ACHIEVEMENTS -->
+<section id="achievements" class="section">
+    <h2 class="section-title">Achievements</h2>
+    <ul>
+        <li>500+ Radiographs Analyzed</li>
+        <li>200+ Inspections Completed</li>
+        <li>3+ Years NDT Experience</li>
+    </ul>
+</section>
+
+<!-- 📞 CONTACT -->
+<section id="contact" class="section">
+    <h2 class="section-title">Contact Me</h2>
+    <p>Email: <a href="mailto:umamaheshpolu@gmail.com">umamaheshpolu@gmail.com</a></p>
+</section>
+
+<!-- ✔ Lightbox Modal -->
+<div id="lightbox" class="lightbox">
+    <img id="lightbox-img">
+</div>
+
+<!-- 📞 WhatsApp Button -->
+<a href="https://wa.me/916304202170" class="whatsapp-btn" target="_blank">
+    💬
+</a>
 
 <script src="script.js"></script>
 </body>
 </html>
-
