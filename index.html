@@ -10,30 +10,29 @@
 
 <canvas id="particles"></canvas>
 
-<!-- Theme Toggle -->
+<!-- DARK/LIGHT TOGGLE -->
 <div id="theme-toggle">🌙</div>
 
-<!-- WhatsApp Floating -->
+<!-- WHATSAPP -->
 <a href="https://wa.me/916304202170" class="whatsapp-btn" target="_blank">💬</a>
 
 <!-- NAVBAR -->
 <header class="navbar glass">
-    <div class="logo-animated">UM</div>
+    <div class="logo">UM</div>
     <nav>
         <a href="#about">About</a>
         <a href="#gallery">Gallery</a>
         <a href="#certificates">Certificates</a>
         <a href="#experience">Experience</a>
-        <a href="#testimonials">Testimonials</a>
+        <a href="#feedback">Feedback</a>
         <a href="#contact">Contact</a>
     </nav>
 </header>
 
 <!-- HERO -->
 <section class="hero fade">
-    <div class="profile-wrapper">
-        <div class="glow-circle"></div>
-        <img src="assets/profile1.png" class="profile-pic">
+    <div class="profile-container">
+        <img src="assets/profile1.png" class="profile-img" alt="Profile">
     </div>
 
     <h1 class="title">Uma Mahesh Poluparthi</h1>
@@ -42,15 +41,15 @@
     <a href="assets/resume.pdf" download class="btn-primary">Download CV</a>
 
     <div class="stats">
-        <div class="stat neon-blue">
+        <div class="stat">
             <span class="count" data-val="3">0</span>
             <p>Years Experience</p>
         </div>
-        <div class="stat neon-green">
+        <div class="stat">
             <span class="count" data-val="500">0</span>
             <p>Radiographs Analyzed</p>
         </div>
-        <div class="stat neon-pink">
+        <div class="stat">
             <span class="count" data-val="200">0</span>
             <p>Inspections Completed</p>
         </div>
@@ -79,38 +78,29 @@
 </section>
 
 <!-- CERTIFICATES -->
-<section id="certificates" class="section fade">
+<section id="certificates" class="section fade glass">
     <h2>Certificates</h2>
 
     <div class="cert-container">
 
-        <!-- CARD 1 -->
         <div class="cert-card">
-            <div class="cert-front">PCN Level II<br>RTFI</div>
+            <div class="cert-front">PCN Level II — RTFI</div>
             <div class="cert-back">
-                Radiographic Testing Film Interpretation  
-                Certified to Level II standards  
-                PCN Approved
+                Radiographic Film Interpretation<br>Certified Level II
             </div>
         </div>
 
-        <!-- CARD 2 -->
         <div class="cert-card">
-            <div class="cert-front">PCN Level II<br>MT</div>
+            <div class="cert-front">PCN Level II — MT</div>
             <div class="cert-back">
-                Magnetic Particle Testing  
-                Defect Detection & Interpretation  
-                PCN Approved
+                Magnetic Particle Testing<br>Certified Level II
             </div>
         </div>
 
-        <!-- CARD 3 -->
         <div class="cert-card">
-            <div class="cert-front">PCN Level II<br>PT</div>
+            <div class="cert-front">PCN Level II — PT</div>
             <div class="cert-back">
-                Penetrant Testing  
-                Surface Defect Identification  
-                PCN Approved
+                Penetrant Testing<br>Certified Level II
             </div>
         </div>
 
@@ -126,56 +116,58 @@
         <div class="timeline-item">
             <div class="timeline-dot"></div>
             <h3>2020</h3>
-            <p>Trainee – NDT Foundations & Safety Training</p>
+            <p>Trainee — NDT Basics, Safety, Industrial Exposure</p>
         </div>
 
         <div class="timeline-item">
             <div class="timeline-dot"></div>
             <h3>2021</h3>
-            <p>NDT Technician – MT/PT Operations</p>
+            <p>NDT Technician — MT & PT Field Work</p>
         </div>
 
         <div class="timeline-item">
             <div class="timeline-dot"></div>
             <h3>2022</h3>
-            <p>RT/MT/PT Level II – Film Interpretation & Analysis</p>
+            <p>RT/MT/PT Level II — Film Reading & Interpretation</p>
         </div>
 
         <div class="timeline-item">
             <div class="timeline-dot"></div>
             <h3>2024</h3>
-            <p>Senior NDT Technician – Multi-Method Inspection</p>
+            <p>Senior NDT Technician — Multi-Method Inspection</p>
         </div>
 
     </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section id="testimonials" class="section fade">
-    <h2>Testimonials</h2>
+<!-- FEEDBACK -->
+<section id="feedback" class="section fade glass">
+    <h2>Your Feedback</h2>
 
-    <div class="testimonial-box">
-        <p id="testimonial-text">
-            “Uma is a highly disciplined and technically strong NDT technician with excellent interpretation skills.”
-        </p>
-    </div>
+    <form action="https://formsubmit.co/umapolu@gmail.com" method="POST" class="feedback-form">
 
-    <div class="testimonial-nav">
-        <button id="prev-btn">◀</button>
-        <button id="next-btn">▶</button>
-    </div>
+        <input type="hidden" name="_captcha" value="false">
+
+        <input type="text" name="name" placeholder="Your Name" required>
+
+        <input type="email" name="email" placeholder="Email (optional)">
+
+        <textarea name="message" placeholder="Your Feedback" required></textarea>
+
+        <button type="submit" class="btn-primary">Submit Feedback</button>
+
+    </form>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="section glass fade">
+<section id="contact" class="section fade glass">
     <h2>Contact</h2>
-
     <p>Email: <a href="mailto:umamahe113@gmail.com">umamahe113@gmail.com</a></p>
 </section>
 
 <!-- FOOTER -->
 <footer class="footer">
-    © 2025 Uma Mahesh — Built with precision, discipline & pride.
+    © 2025 Uma Mahesh — All Rights Reserved.
 </footer>
 
 <script src="script.js"></script>
