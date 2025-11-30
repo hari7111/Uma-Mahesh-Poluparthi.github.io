@@ -8,7 +8,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const galleryDiv = document.getElementById("gallery");
 
   // List of image filenames in /assets/gallery/
-  const filenames = [
+  const filenames = ["img1.jpg", "img2.jpg","img3.jpg", "img4.jpg"
     // <-- Add all your gallery image names here manually, e.g. -->
     // "img1.jpg", "img2.jpg", "IMG_20221001_223833.jpg", ...
   ];
@@ -32,5 +32,6 @@ document.addEventListener("click", e => {
     e.target.style.display = 'none';
   }
 });
+
 
 
