@@ -185,4 +185,19 @@ projectItems.forEach(item => {
         item.classList.toggle("active");
     });
 });
+/* ---------------------------------------------------
+   POPUP SUCCESS MESSAGE BEFORE REDIRECT
+---------------------------------------------------- */
+const form = document.getElementById("feedbackForm");
+const popup = document.getElementById("popup");
+
+form.addEventListener("submit", () => {
+    popup.classList.add("show");
+
+    // fade out after 3 seconds (redirect happens automatically)
+    setTimeout(() => {
+        popup.classList.remove("show");
+    }, 3000);
+});
+
 
