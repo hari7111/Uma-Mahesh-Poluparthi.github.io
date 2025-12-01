@@ -200,4 +200,101 @@ form.addEventListener("submit", () => {
     }, 3000);
 });
 
+/* ---------------------------------------------------
+   LOADING SCREEN FADE OUT
+---------------------------------------------------- */
+window.addEventListener("load", () => {
+    const loader = document.getElementById("loader");
+    setTimeout(() => {
+        loader.style.opacity = 0;
+        setTimeout(() => loader.style.display = "none", 800);
+    }, 600);
+});
+
+/* ---------------------------------------------------
+   BACK TO TOP BUTTON
+---------------------------------------------------- */
+const backToTop = document.getElementById("backToTop");
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 600) {
+        backToTop.classList.add("show");
+    } else {
+        backToTop.classList.remove("show");
+    }
+});
+
+backToTop.onclick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+};
+
+/* ---------------------------------------------------
+   SECTION INDICATOR
+---------------------------------------------------- */
+const secDots = document.querySelectorAll(".section-indicator div");
+const sections = ["hero", "about", "gallery", "certificates", "experience", "projects", "feedback", "contact"];
+
+window.addEventListener("scroll", () => {
+    let pos = window.scrollY + window.innerHeight / 2;
+
+    sections.forEach((sec, index) => {
+        let el = document.getElementById(sec);
+        if (!el) return;
+
+        if (pos > el.offsetTop && pos < el.offsetTop + el.offsetHeight) {
+            secDots.forEach(d => d.classList.remove("active"));
+            secDots[index].classList.add("active");
+        }
+    });
+});
+
+/* ---------------------------------------------------
+   MOUSE SPOTLIGHT EFFECT
+---------------------------------------------------- */
+document.addEventListener("mousemove", (e) => {
+    document.body.style.setProperty("--spotlight-x", e.clientX + "px");
+    document.body.style.setProperty("--spotlight-y", e.clientY + "px");
+});
+
+document.body.onmousemove = function(e) {
+    document.body.style.setProperty("--mouse-x", e.pageX + "px");
+    document.body.style.setProperty("--mouse-y", e.pageY + "px");
+};
+document.body.style.setProperty("--mouse-x", "0px");
+document.body.style.setProperty("--mouse-y", "0px");
+
+/* ---------------------------------------------------
+   TYPING EFFECT
+---------------------------------------------------- */
+const typingTexts = [
+    "Multi-NDT Specialist",
+    "PCN Level II Technician",
+    "Industrial Inspector",
+    "RT • MT • PT • RTFI"
+];
+
+let tIndex4 = 0;
+let charIndex = 0;
+const typingEl = document.getElementById("typing");
+
+function typingLoop() {
+    if (!typingEl) return;
+
+    let current = typingTexts[tIndex4];
+    typingEl.textContent = current.substring(0, charIndex);
+
+    if (charIndex < current.length) {
+        charIndex++;
+    } else {
+        setTimeout(() => {
+            charIndex = 0;
+            tIndex4 = (tIndex4 + 1) % typingTexts.length;
+        }, 1000);
+    }
+
+    setTimeout(typingLoop, 80);
+}
+
+typingLoop();
+
 
