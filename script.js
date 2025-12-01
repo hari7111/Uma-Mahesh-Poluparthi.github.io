@@ -158,3 +158,19 @@ function fadeInOnScroll() {
 
 window.addEventListener("scroll", fadeInOnScroll);
 window.addEventListener("load", fadeInOnScroll);
+
+/* ======================================================
+   CERTIFICATE CAROUSEL
+====================================================== */
+const certCarousel = document.getElementById("certCarousel");
+const certNext = document.getElementById("certNext");
+const certPrev = document.getElementById("certPrev");
+
+certNext.addEventListener("click", () => {
+    certCarousel.scrollBy({ left: 220, behavior: "smooth" });
+});
+
+certPrev.addEventListener("click", () => {
+    certCarousel.scrollBy({ left: -220, behavior: "smooth" });
+});
+
