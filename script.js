@@ -167,3 +167,22 @@ function revealFade() {
 
 window.addEventListener("scroll", revealFade);
 window.addEventListener("load", revealFade);
+/* ---------------------------------------------------
+   PROJECT ACCORDION TOGGLE
+---------------------------------------------------- */
+const projectItems = document.querySelectorAll(".project-item");
+
+projectItems.forEach(item => {
+    const header = item.querySelector(".project-header");
+
+    header.addEventListener("click", () => {
+        const openItem = document.querySelector(".project-item.active");
+
+        if (openItem && openItem !== item) {
+            openItem.classList.remove("active");
+        }
+
+        item.classList.toggle("active");
+    });
+});
+
