@@ -355,3 +355,42 @@ body.light {
     color: #888;
     font-size: 15px;
 }
+/* ---------------------------------------------
+   PROJECTS SECTION
+---------------------------------------------- */
+.project-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.project-card {
+    background: #1a1a1a;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #333;
+    transition: 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+    background: #222;
+}
+
+.project-card h3 {
+    font-size: 22px;
+    margin-bottom: 8px;
+    color: #fff;
+}
+
+.project-role {
+    font-size: 15px;
+    color: #c7c7c7;
+    margin-bottom: 10px;
+}
+
+.project-card p {
+    color: #d1d1d1;
+    line-height: 1.6;
+}
+
