@@ -1,102 +1,5 @@
 /* ---------------------------------------------------
-   COUNTERS
----------------------------------------------------- */
-let counters = document.querySelectorAll(".count");
-let started = false;
-
-function startCounter() {
-    if (started) return;
-
-    const firstCounter = counters[0];
-    if (!firstCounter) return;
-
-    if (window.scrollY + window.innerHeight > firstCounter.offsetTop) {
-        counters.forEach(counter => {
-            let target = +counter.dataset.val;
-            let current = 0;
-            let step = target / 80;
-
-            let update = setInterval(() => {
-                current += step;
-                counter.textContent = Math.floor(current);
-                if (current >= target) {
-                    counter.textContent = target;
-                    clearInterval(update);
-                }
-            }, 20);
-        });
-
-        started = true;
-    }
-}
-
-window.addEventListener("scroll", startCounter);
-
-
-/* ---------------------------------------------------
-   DARK / LIGHT MODE TOGGLE
----------------------------------------------------- */
-const toggle = document.getElementById("theme-toggle");
-
-toggle.onclick = () => {
-    document.body.classList.toggle("light");
-
-    if (document.body.classList.contains("light")) {
-        toggle.textContent = "☀️";
-    } else {
-        toggle.textContent = "🌙";
-    }
-};
-
-
-/* ---------------------------------------------------
-   TESTIMONIAL SLIDER (Sample Text)
----------------------------------------------------- */
-const testimonials = [
-    "“Uma is a highly disciplined and technically strong NDT technician with excellent interpretation skills.”",
-    "“He consistently delivers accurate inspection results and maintains high safety standards.”",
-    "“Professional, reliable, and precise in radiographic interpretation and NDT work.”"
-];
-
-let tIndex = 0;
-const tBox = document.getElementById("testimonial-text");
-
-function showTestimonial(idx) {
-    if (!tBox) return;
-    tBox.style.opacity = 0;
-
-    setTimeout(() => {
-        tBox.textContent = testimonials[idx];
-        tBox.style.opacity = 1;
-    }, 300);
-}
-
-const nextBtn = document.getElementById("next-btn");
-const prevBtn = document.getElementById("prev-btn");
-
-if (nextBtn) {
-    nextBtn.onclick = () => {
-        tIndex = (tIndex + 1) % testimonials.length;
-        showTestimonial(tIndex);
-    };
-}
-
-if (prevBtn) {
-    prevBtn.onclick = () => {
-        tIndex = (tIndex - 1 + testimonials.length) % testimonials.length;
-        showTestimonial(tIndex);
-    };
-}
-
-// Auto-slide every 5 seconds
-setInterval(() => {
-    tIndex = (tIndex + 1) % testimonials.length;
-    showTestimonial(tIndex);
-}, 5000);
-
-
-/* ---------------------------------------------------
-   PARTICLE BACKGROUND (White / Grey Particles)
+   PARTICLE BACKGROUND
 ---------------------------------------------------- */
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
@@ -110,21 +13,18 @@ class Particle {
     constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = 1.4;
-        this.speedX = (Math.random() - 0.5) * 0.25;
-        this.speedY = (Math.random() - 0.5) * 0.25;
+        this.size = 1.5;
+        this.speedX = (Math.random() - 0.5) * 0.3;
+        this.speedY = (Math.random() - 0.5) * 0.3;
     }
-
     update() {
         this.x += this.speedX;
         this.y += this.speedY;
-
-        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+        if (this.x <= 0 || this.x >= canvas.width) this.speedX *= -1;
+        if (this.y <= 0 || this.y >= canvas.height) this.speedY *= -1;
     }
-
     draw() {
-        ctx.fillStyle = "rgba(220,220,220,0.6)";
+        ctx.fillStyle = "rgba(200,200,200,0.6)";
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
@@ -133,100 +33,76 @@ class Particle {
 
 function initParticles() {
     particlesArray = [];
-    for (let i = 0; i < 60; i++) {
-        particlesArray.push(new Particle());
-    }
+    for (let i = 0; i < 60; i++) particlesArray.push(new Particle());
 }
-
 function animateParticles() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particlesArray.forEach(p => {
-        p.update();
-        p.draw();
-    });
+    particlesArray.forEach(p => { p.update(); p.draw(); });
     requestAnimationFrame(animateParticles);
 }
-
 initParticles();
 animateParticles();
 
-
 /* ---------------------------------------------------
-   FADE-UP SCROLL REVEAL
----------------------------------------------------- */
-const fadeItems = document.querySelectorAll(".fade");
-
-function revealFade() {
-    fadeItems.forEach(el => {
-        const rect = el.getBoundingClientRect().top;
-        if (rect < window.innerHeight - 60) {
-            el.style.animationPlayState = "running";
-        }
-    });
-}
-
-window.addEventListener("scroll", revealFade);
-window.addEventListener("load", revealFade);
-/* ---------------------------------------------------
-   PROJECT ACCORDION TOGGLE
----------------------------------------------------- */
-const projectItems = document.querySelectorAll(".project-item");
-
-projectItems.forEach(item => {
-    const header = item.querySelector(".project-header");
-
-    header.addEventListener("click", () => {
-        const openItem = document.querySelector(".project-item.active");
-
-        if (openItem && openItem !== item) {
-            openItem.classList.remove("active");
-        }
-
-        item.classList.toggle("active");
-    });
-});
-/* ---------------------------------------------------
-   POPUP SUCCESS MESSAGE BEFORE REDIRECT
----------------------------------------------------- */
-const form = document.getElementById("feedbackForm");
-const popup = document.getElementById("popup");
-
-form.addEventListener("submit", () => {
-    popup.classList.add("show");
-
-    // fade out after 3 seconds (redirect happens automatically)
-    setTimeout(() => {
-        popup.classList.remove("show");
-    }, 3000);
-});
-
-/* ---------------------------------------------------
-   LOADING SCREEN FADE OUT
+   LOADING SCREEN
 ---------------------------------------------------- */
 window.addEventListener("load", () => {
-    const loader = document.getElementById("loader");
     setTimeout(() => {
+        const loader = document.getElementById("loader");
         loader.style.opacity = 0;
         setTimeout(() => loader.style.display = "none", 800);
     }, 600);
 });
 
 /* ---------------------------------------------------
+   COUNTERS
+---------------------------------------------------- */
+let counters = document.querySelectorAll(".count");
+let started = false;
+
+function startCounters() {
+    if (started) return;
+    if (!counters.length) return;
+
+    let first = counters[0].offsetTop;
+    if (window.scrollY + window.innerHeight > first) {
+        counters.forEach(counter => {
+            let target = +counter.dataset.val;
+            let current = 0;
+            let step = target / 80;
+
+            let interval = setInterval(() => {
+                current += step;
+                counter.textContent = Math.floor(current);
+                if (current >= target) {
+                    counter.textContent = target;
+                    clearInterval(interval);
+                }
+            }, 20);
+        });
+        started = true;
+    }
+}
+window.addEventListener("scroll", startCounters);
+
+/* ---------------------------------------------------
+   DARK / LIGHT MODE
+---------------------------------------------------- */
+const themeToggle = document.getElementById("theme-toggle");
+
+themeToggle.onclick = () => {
+    document.body.classList.toggle("light");
+    themeToggle.textContent = document.body.classList.contains("light") ? "☀️" : "🌙";
+};
+
+/* ---------------------------------------------------
    BACK TO TOP BUTTON
 ---------------------------------------------------- */
 const backToTop = document.getElementById("backToTop");
-
 window.addEventListener("scroll", () => {
-    if (window.scrollY > 600) {
-        backToTop.classList.add("show");
-    } else {
-        backToTop.classList.remove("show");
-    }
+    backToTop.classList.toggle("show", window.scrollY > 600);
 });
-
-backToTop.onclick = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-};
+backToTop.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
 /* ---------------------------------------------------
    SECTION INDICATOR
@@ -235,36 +111,86 @@ const secDots = document.querySelectorAll(".section-indicator div");
 const sections = ["hero", "about", "gallery", "certificates", "experience", "projects", "feedback", "contact"];
 
 window.addEventListener("scroll", () => {
-    let pos = window.scrollY + window.innerHeight / 2;
+    let pos = window.scrollY + innerHeight / 2;
 
-    sections.forEach((sec, index) => {
+    sections.forEach((sec, i) => {
         let el = document.getElementById(sec);
         if (!el) return;
 
         if (pos > el.offsetTop && pos < el.offsetTop + el.offsetHeight) {
-            secDots.forEach(d => d.classList.remove("active"));
-            secDots[index].classList.add("active");
+            secDots.forEach(dot => dot.classList.remove("active"));
+            secDots[i].classList.add("active");
         }
     });
 });
 
 /* ---------------------------------------------------
-   MOUSE SPOTLIGHT EFFECT
+   LIGHTBOX GALLERY
 ---------------------------------------------------- */
-document.addEventListener("mousemove", (e) => {
-    document.body.style.setProperty("--spotlight-x", e.clientX + "px");
-    document.body.style.setProperty("--spotlight-y", e.clientY + "px");
-});
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
 
-document.body.onmousemove = function(e) {
-    document.body.style.setProperty("--mouse-x", e.pageX + "px");
-    document.body.style.setProperty("--mouse-y", e.pageY + "px");
+document.querySelectorAll(".lightbox-img").forEach(img => {
+    img.addEventListener("click", () => {
+        lightbox.style.display = "flex";
+        lightboxImg.src = img.src;
+    });
+});
+document.getElementById("lightbox-close").onclick = () => {
+    lightbox.style.display = "none";
 };
-document.body.style.setProperty("--mouse-x", "0px");
-document.body.style.setProperty("--mouse-y", "0px");
 
 /* ---------------------------------------------------
-   TYPING EFFECT
+   CERTIFICATE PDF VIEWER
+---------------------------------------------------- */
+function openPDF(file) {
+    document.getElementById("pdf-viewer").style.display = "flex";
+    document.getElementById("pdf-frame").src = file;
+}
+document.getElementById("pdf-close").onclick = () => {
+    document.getElementById("pdf-viewer").style.display = "none";
+};
+
+/* ---------------------------------------------------
+   PROJECT ACCORDION
+---------------------------------------------------- */
+document.querySelectorAll(".project-item").forEach(item => {
+    item.querySelector(".project-header").addEventListener("click", () => {
+        const open = document.querySelector(".project-item.active");
+        if (open && open !== item) open.classList.remove("active");
+        item.classList.toggle("active");
+    });
+});
+
+/* ---------------------------------------------------
+   POPUP MESSAGE FOR FEEDBACK FORM
+---------------------------------------------------- */
+const feedbackForm = document.getElementById("feedbackForm");
+const popup = document.getElementById("popup");
+
+feedbackForm.addEventListener("submit", () => {
+    popup.classList.add("show");
+    setTimeout(() => popup.classList.remove("show"), 3000);
+});
+
+/* ---------------------------------------------------
+   FADE-UP SCROLL REVEAL
+---------------------------------------------------- */
+const fadeItems = document.querySelectorAll(".fade");
+
+function fadeReveal() {
+    fadeItems.forEach(el => {
+        const rect = el.getBoundingClientRect().top;
+        if (rect < window.innerHeight - 60) {
+            el.style.animationPlayState = "running";
+        }
+    });
+}
+window.addEventListener("scroll", fadeReveal);
+window.addEventListener("load", fadeReveal);
+
+/* ---------------------------------------------------
+   TYPING ANIMATION
 ---------------------------------------------------- */
 const typingTexts = [
     "Multi-NDT Specialist",
@@ -272,29 +198,39 @@ const typingTexts = [
     "Industrial Inspector",
     "RT • MT • PT • RTFI"
 ];
-
-let tIndex4 = 0;
+let tIndex = 0;
 let charIndex = 0;
 const typingEl = document.getElementById("typing");
 
-function typingLoop() {
+function typeLoop() {
     if (!typingEl) return;
 
-    let current = typingTexts[tIndex4];
-    typingEl.textContent = current.substring(0, charIndex);
+    let current = typingTexts[tIndex];
+    typingEl.textContent = current.slice(0, charIndex);
 
     if (charIndex < current.length) {
         charIndex++;
     } else {
         setTimeout(() => {
             charIndex = 0;
-            tIndex4 = (tIndex4 + 1) % typingTexts.length;
+            tIndex = (tIndex + 1) % typingTexts.length;
         }, 1000);
     }
-
-    setTimeout(typingLoop, 80);
+    setTimeout(typeLoop, 80);
 }
+typeLoop();
 
-typingLoop();
+/* ---------------------------------------------------
+   TELUGU ↔ ENGLISH LANGUAGE SWITCH
+---------------------------------------------------- */
+const langToggle = document.getElementById("lang-toggle");
+let isTelugu = false;
 
+langToggle.addEventListener("click", () => {
+    isTelugu = !isTelugu;
+    langToggle.textContent = isTelugu ? "English" : "తెలుగు";
 
+    document.querySelectorAll(".lang").forEach(el => {
+        el.textContent = isTelugu ? el.dataset.te : el.dataset.en;
+    });
+});
