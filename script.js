@@ -188,3 +188,7 @@ function zoomCV(direction) {
     document.getElementById("cvFrame").style.transform = `scale(${cvZoom})`;
 }
 
+function openCV() {
+    document.querySelector("#cv").scrollIntoView({ behavior: "smooth" });
+}
+
