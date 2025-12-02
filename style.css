@@ -711,4 +711,26 @@ body {
     transform: translateY(-2px);
 }
 
+.cv-controls button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: #222;
+    border: 1px solid #444;
+    font-size: 22px;
+    color: white;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.cv-controls button span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
 
