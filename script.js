@@ -1,126 +1,53 @@
-/* ===================================================================
+/* ======================================================
    LOADING SCREEN
-=================================================================== */
+====================================================== */
 window.addEventListener("load", () => {
     const loader = document.getElementById("loader");
-
     setTimeout(() => {
-        loader.style.opacity = "0";
+        loader.style.opacity = 0;
         setTimeout(() => loader.style.display = "none", 600);
     }, 400);
 });
 
 
-/* ===================================================================
-   MOBILE MENU — FULL-SCREEN GLASS (Option C)
-=================================================================== */
-const hamburger = document.getElementById("hamburger");
-const mobileMenu = document.getElementById("mobileMenu");
-const menuClose = document.getElementById("menuClose");
+/* ======================================================
+   COUNTERS (HERO STATISTICS)
+====================================================== */
+let counters = document.querySelectorAll(".count");
+let counterStarted = false;
 
-hamburger.addEventListener("click", () => {
-    mobileMenu.style.display = "flex";
-    document.body.style.overflow = "hidden"; // prevent scrolling
-});
+function runCounters() {
+    if (counterStarted) return;
 
-function closeMenu() {
-    mobileMenu.style.display = "none";
-    document.body.style.overflow = "auto";
-}
+    let triggerPoint = window.innerHeight * 0.8;
 
-menuClose.addEventListener("click", closeMenu);
-
-
-/* ===================================================================
-   TYPING ANIMATION — SMOOTHER VERSION
-=================================================================== */
-const typingTexts = [
-    "Multi-NDT Specialist",
-    "PCN Level II Technician",
-    "Industrial Inspector",
-    "RT • MT • PT • RTFI"
-];
-
-let typingIndex = 0;
-let charIndex = 0;
-const typingEl = document.getElementById("typing");
-
-function typingEffect() {
-    if (!typingEl) return;
-
-    let text = typingTexts[typingIndex];
-
-    typingEl.textContent = text.slice(0, charIndex);
-
-    if (charIndex < text.length) {
-        charIndex++;
-    } else {
-        setTimeout(() => {
-            charIndex = 0;
-            typingIndex = (typingIndex + 1) % typingTexts.length;
-        }, 900); // Soft pause
-    }
-
-    setTimeout(typingEffect, 80);
-}
-
-typingEffect();
-
-
-/* ===================================================================
-   COUNTERS — USING INTERSECTION OBSERVER
-=================================================================== */
-const counterElements = document.querySelectorAll(".count");
-
-const counterObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const counter = entry.target;
-            const target = +counter.dataset.val;
+    counters.forEach(counter => {
+        let rect = counter.getBoundingClientRect().top;
+        if (rect < triggerPoint) {
+            let value = +counter.dataset.val;
             let start = 0;
+            let step = value / 70;
 
-            const increment = target / 80;
-
-            const update = () => {
-                start += increment;
+            let interval = setInterval(() => {
+                start += step;
                 counter.textContent = Math.floor(start);
-
-                if (start < target) {
-                    requestAnimationFrame(update);
-                } else {
-                    counter.textContent = target;
+                if (start >= value) {
+                    counter.textContent = value;
+                    clearInterval(interval);
                 }
-            };
-
-            update();
-            counterObserver.unobserve(counter);
+            }, 20);
         }
     });
-}, { threshold: 0.4 });
 
-counterElements.forEach(el => counterObserver.observe(el));
+    counterStarted = true;
+}
 
-
-/* ===================================================================
-   SMOOTH FADE-IN SCROLL ANIMATIONS (Soft)
-=================================================================== */
-const fadeElements = document.querySelectorAll(".fade");
-
-const fadeObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.animationPlayState = "running";
-            fadeObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.2 });
-
-fadeElements.forEach(el => fadeObserver.observe(el));
+window.addEventListener("scroll", runCounters);
 
 
-/* ===================================================================
+/* ======================================================
    LIGHTBOX GALLERY
-=================================================================== */
+====================================================== */
 const lightbox = document.getElementById("lightbox-viewer");
 const lightboxImg = document.getElementById("lightbox-img");
 const closeLightbox = document.getElementById("lightbox-close");
@@ -137,15 +64,12 @@ closeLightbox.addEventListener("click", () => {
 });
 
 
-/* ===================================================================
-   CERTIFICATE PDF VIEWER
-=================================================================== */
+/* ======================================================
+   PDF VIEWER (CERTIFICATES)
+====================================================== */
 function openPDF(file) {
-    const pdfViewer = document.getElementById("pdf-viewer");
-    const pdfFrame = document.getElementById("pdf-frame");
-
-    pdfViewer.style.display = "flex";
-    pdfFrame.src = file;
+    document.getElementById("pdf-viewer").style.display = "flex";
+    document.getElementById("pdf-frame").src = file;
 }
 window.openPDF = openPDF;
 
@@ -155,59 +79,89 @@ document.getElementById("pdf-close").addEventListener("click", () => {
 });
 
 
-/* ===================================================================
+/* ======================================================
    PROJECT ACCORDION
-=================================================================== */
+====================================================== */
 document.querySelectorAll(".project-item").forEach(item => {
     const header = item.querySelector(".project-header");
 
     header.addEventListener("click", () => {
-        const openItem = document.querySelector(".project-item.active");
-
+        let openItem = document.querySelector(".project-item.active");
         if (openItem && openItem !== item) {
             openItem.classList.remove("active");
         }
-
         item.classList.toggle("active");
     });
 });
 
 
-/* ===================================================================
-   FEEDBACK POPUP
-=================================================================== */
+/* ======================================================
+   FEEDBACK POPUP MESSAGE
+====================================================== */
 const feedbackForm = document.getElementById("feedbackForm");
 const popup = document.getElementById("popup");
 
-if (feedbackForm) {
-    feedbackForm.addEventListener("submit", () => {
-        popup.classList.add("show");
-        setTimeout(() => popup.classList.remove("show"), 2300);
+feedbackForm.addEventListener("submit", () => {
+    popup.classList.add("show");
+    setTimeout(() => popup.classList.remove("show"), 2500);
+});
+
+
+/* ======================================================
+   TYPING ANIMATION
+====================================================== */
+const typingTexts = [
+    "Multi-NDT Specialist",
+    "PCN Level II Technician",
+    "Industrial Inspector",
+    "RT • MT • PT • RTFI"
+];
+
+let typingIndex = 0;
+let charIndex = 0;
+const typingEl = document.getElementById("typing");
+
+function typingEffect() {
+    if (!typingEl) return;
+
+    let current = typingTexts[typingIndex];
+    typingEl.textContent = current.substring(0, charIndex);
+
+    if (charIndex < current.length) {
+        charIndex++;
+    } else {
+        setTimeout(() => {
+            charIndex = 0;
+            typingIndex = (typingIndex + 1) % typingTexts.length;
+        }, 1000);
+    }
+
+    setTimeout(typingEffect, 80);
+}
+
+typingEffect();
+
+
+/* ======================================================
+   FADE-IN SCROLL ANIMATION
+====================================================== */
+const fadeItems = document.querySelectorAll(".fade");
+
+function fadeInOnScroll() {
+    fadeItems.forEach(el => {
+        const rect = el.getBoundingClientRect().top;
+        if (rect < window.innerHeight - 50) {
+            el.style.animationPlayState = "running";
+        }
     });
 }
 
+window.addEventListener("scroll", fadeInOnScroll);
+window.addEventListener("load", fadeInOnScroll);
 
-/* ===================================================================
-   BACK TO TOP BUTTON
-=================================================================== */
-const backToTop = document.getElementById("backToTop");
-
-window.addEventListener("scroll", () => {
-    if (window.scrollY > 500) {
-        backToTop.style.display = "flex";
-    } else {
-        backToTop.style.display = "none";
-    }
-});
-
-backToTop.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-});
-
-
-/* ===================================================================
+/* ======================================================
    CERTIFICATE CAROUSEL
-=================================================================== */
+====================================================== */
 const certCarousel = document.getElementById("certCarousel");
 const certNext = document.getElementById("certNext");
 const certPrev = document.getElementById("certPrev");
@@ -221,22 +175,60 @@ certPrev.addEventListener("click", () => {
 });
 
 
-/* ===================================================================
-   HIRE ME BUTTON → Scroll to Contact
-=================================================================== */
-function scrollToContact() {
-    document.querySelector("#contact")
-        .scrollIntoView({ behavior: "smooth" });
-}
-
-
-/* ===================================================================
-   VIEW CV SCROLL
-=================================================================== */
 function openCV() {
-    document.querySelector("#cv")
-        .scrollIntoView({ behavior: "smooth" });
+    document.querySelector("#cv").scrollIntoView({ behavior: "smooth" });
 }
 
-window.openCV = openCV;
+/* ==============================
+   STATUS CONTROL
+================================= */
+// Change your status here: "Actively Employed", "Out of Office", "Open to Opportunities"
+let currentStatus = "Open to Opportunities";
+
+function updateStatus() {
+    const dot = document.querySelector(".status-dot");
+    const text = document.getElementById("statusText");
+
+    if (currentStatus === "Actively Employed") {
+        text.textContent = "Actively Employed";
+        dot.style.background = "#4da3ff";
+        dot.style.boxShadow = "0 0 6px #4da3ff";
+    }
+    else if (currentStatus === "Out of Office") {
+        text.textContent = "Out of Office";
+        dot.style.background = "#ffc400";
+        dot.style.boxShadow = "0 0 6px #ffc400";
+    }
+    else if (currentStatus === "Open to Opportunities") {
+        text.textContent = "Open to Opportunities";
+        dot.style.background = "#00ff87";
+        dot.style.boxShadow = "0 0 6px #00ff87";
+    }
+}
+
+updateStatus();
+
+/* ==============================
+   HIRE ME → Scroll to Contact
+================================= */
+function scrollToContact() {
+    document.querySelector("#contact").scrollIntoView({ 
+        behavior: "smooth" 
+    });
+}
+
+/* ==============================
+   COPY EMAIL with POP UP
+================================= */
+
+function copyEmail() {
+    navigator.clipboard.writeText("umamahe113@gmail.com");
+
+    const popup = document.getElementById("copyPopup");
+    popup.classList.add("show");
+
+    setTimeout(() => {
+        popup.classList.remove("show");
+    }, 2000);  // hide after 2 seconds
+}
 
