@@ -231,21 +231,6 @@ function scrollToContact() {
 
 
 /* ===================================================================
-   COPY EMAIL + POPUP
-=================================================================== */
-function copyEmail() {
-    navigator.clipboard.writeText("umamahe113@gmail.com");
-
-    const popup = document.getElementById("copyPopup");
-    popup.classList.add("show");
-
-    setTimeout(() => popup.classList.remove("show"), 2000);
-}
-
-window.copyEmail = copyEmail;
-
-
-/* ===================================================================
    VIEW CV SCROLL
 =================================================================== */
 function openCV() {
@@ -254,3 +239,4 @@ function openCV() {
 }
 
 window.openCV = openCV;
+
