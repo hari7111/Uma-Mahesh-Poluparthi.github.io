@@ -1,41 +1,43 @@
-/* ======================================================
+/* ==========================
    LOADING SCREEN
-====================================================== */
+========================== */
 window.addEventListener("load", () => {
     const loader = document.getElementById("loader");
-    setTimeout(() => {
-        loader.style.opacity = 0;
-        setTimeout(() => loader.style.display = "none", 600);
-    }, 400);
+    if (loader) {
+        setTimeout(() => {
+            loader.style.opacity = 0;
+            setTimeout(() => loader.style.display = "none", 600);
+        }, 400);
+    }
 });
 
-
-/* ======================================================
-   COUNTERS (HERO STATISTICS)
-====================================================== */
+/* ==========================
+   COUNTERS
+========================== */
 let counters = document.querySelectorAll(".count");
 let counterStarted = false;
 
 function runCounters() {
     if (counterStarted) return;
 
-    let triggerPoint = window.innerHeight * 0.8;
+    let trigger = window.innerHeight * 0.8;
 
     counters.forEach(counter => {
         let rect = counter.getBoundingClientRect().top;
-        if (rect < triggerPoint) {
+        if (rect < trigger) {
             let value = +counter.dataset.val;
-            let start = 0;
-            let step = value / 70;
+            let current = 0;
+            let step = value / 60;
 
-            let interval = setInterval(() => {
-                start += step;
-                counter.textContent = Math.floor(start);
-                if (start >= value) {
+            let counterRun = setInterval(() => {
+                current += step;
+                counter.textContent = Math.floor(current);
+
+                if (current >= value) {
                     counter.textContent = value;
-                    clearInterval(interval);
+                    clearInterval(counterRun);
                 }
-            }, 20);
+            }, 25);
         }
     });
 
@@ -44,72 +46,85 @@ function runCounters() {
 
 window.addEventListener("scroll", runCounters);
 
-
-/* ======================================================
-   LIGHTBOX GALLERY
-====================================================== */
+/* ==========================
+   LIGHTBOX
+========================== */
 const lightbox = document.getElementById("lightbox-viewer");
 const lightboxImg = document.getElementById("lightbox-img");
 const closeLightbox = document.getElementById("lightbox-close");
 
 document.querySelectorAll(".lightbox").forEach(img => {
     img.addEventListener("click", () => {
+        if (!lightbox || !lightboxImg) return;
         lightboxImg.src = img.src;
         lightbox.style.display = "flex";
     });
 });
 
-closeLightbox.addEventListener("click", () => {
-    lightbox.style.display = "none";
-});
+if (closeLightbox) {
+    closeLightbox.addEventListener("click", () => {
+        lightbox.style.display = "none";
+        lightboxImg.src = "";
+    });
+}
 
-
-/* ======================================================
-   PDF VIEWER (CERTIFICATES)
-====================================================== */
+/* ==========================
+   PDF VIEWER
+========================== */
 function openPDF(file) {
-    document.getElementById("pdf-viewer").style.display = "flex";
-    document.getElementById("pdf-frame").src = file;
+    const viewer = document.getElementById("pdf-viewer");
+    const frame = document.getElementById("pdf-frame");
+
+    if (viewer && frame) {
+        frame.src = file;
+        viewer.style.display = "flex";
+    }
 }
 window.openPDF = openPDF;
 
-document.getElementById("pdf-close").addEventListener("click", () => {
-    document.getElementById("pdf-viewer").style.display = "none";
-    document.getElementById("pdf-frame").src = "";
-});
+const pdfClose = document.getElementById("pdf-close");
+if (pdfClose) {
+    pdfClose.addEventListener("click", () => {
+        document.getElementById("pdf-viewer").style.display = "none";
+        document.getElementById("pdf-frame").src = "";
+    });
+}
 
-
-/* ======================================================
+/* ==========================
    PROJECT ACCORDION
-====================================================== */
+========================== */
 document.querySelectorAll(".project-item").forEach(item => {
     const header = item.querySelector(".project-header");
-
     header.addEventListener("click", () => {
-        let openItem = document.querySelector(".project-item.active");
-        if (openItem && openItem !== item) {
-            openItem.classList.remove("active");
-        }
+        document.querySelectorAll(".project-item.active").forEach(open => {
+            if (open !== item) open.classList.remove("active");
+        });
         item.classList.toggle("active");
     });
 });
 
-
-/* ======================================================
-   FEEDBACK POPUP MESSAGE
-====================================================== */
+/* ==========================
+   FEEDBACK POPUP + DELAY REDIRECT
+========================== */
 const feedbackForm = document.getElementById("feedbackForm");
 const popup = document.getElementById("popup");
 
-feedbackForm.addEventListener("submit", () => {
-    popup.classList.add("show");
-    setTimeout(() => popup.classList.remove("show"), 2500);
-});
+if (feedbackForm) {
+    feedbackForm.addEventListener("submit", e => {
+        e.preventDefault();
 
+        if (popup) popup.classList.add("show");
 
-/* ======================================================
-   TYPING ANIMATION
-====================================================== */
+        // Delay redirect and show popup
+        setTimeout(() => {
+            feedbackForm.submit();  // Now actually submit
+        }, 1500);
+    });
+}
+
+/* ==========================
+   TYPING EFFECT
+========================== */
 const typingTexts = [
     "Multi-NDT Specialist",
     "PCN Level II Technician",
@@ -117,40 +132,36 @@ const typingTexts = [
     "RT • MT • PT • RTFI"
 ];
 
-let typingIndex = 0;
-let charIndex = 0;
-const typingEl = document.getElementById("typing");
+let tIndex = 0, cIndex = 0;
+const typingElement = document.getElementById("typing");
 
 function typingEffect() {
-    if (!typingEl) return;
+    if (!typingElement) return;
 
-    let current = typingTexts[typingIndex];
-    typingEl.textContent = current.substring(0, charIndex);
+    let currentText = typingTexts[tIndex];
+    typingElement.textContent = currentText.substring(0, cIndex);
 
-    if (charIndex < current.length) {
-        charIndex++;
+    if (cIndex < currentText.length) {
+        cIndex++;
     } else {
         setTimeout(() => {
-            charIndex = 0;
-            typingIndex = (typingIndex + 1) % typingTexts.length;
-        }, 1000);
+            cIndex = 0;
+            tIndex = (tIndex + 1) % typingTexts.length;
+        }, 900);
     }
 
-    setTimeout(typingEffect, 80);
+    setTimeout(typingEffect, 110);
 }
-
 typingEffect();
 
-
-/* ======================================================
-   FADE-IN SCROLL ANIMATION
-====================================================== */
+/* ==========================
+   SCROLL FADE-IN
+========================== */
 const fadeItems = document.querySelectorAll(".fade");
 
 function fadeInOnScroll() {
     fadeItems.forEach(el => {
-        const rect = el.getBoundingClientRect().top;
-        if (rect < window.innerHeight - 50) {
+        if (el.getBoundingClientRect().top < window.innerHeight - 50) {
             el.style.animationPlayState = "running";
         }
     });
@@ -159,60 +170,32 @@ function fadeInOnScroll() {
 window.addEventListener("scroll", fadeInOnScroll);
 window.addEventListener("load", fadeInOnScroll);
 
-/* ======================================================
+/* ==========================
    CERTIFICATE CAROUSEL
-====================================================== */
+========================== */
 const certCarousel = document.getElementById("certCarousel");
 const certNext = document.getElementById("certNext");
 const certPrev = document.getElementById("certPrev");
 
-certNext.addEventListener("click", () => {
-    certCarousel.scrollBy({ left: 220, behavior: "smooth" });
-});
-
-certPrev.addEventListener("click", () => {
-    certCarousel.scrollBy({ left: -220, behavior: "smooth" });
-});
-
-
-function openCV() {
-    document.querySelector("#cv").scrollIntoView({ behavior: "smooth" });
-}
-
-/* ==============================
-   STATUS CONTROL
-================================= */
-// Change your status here: "Actively Employed", "Out of Office", "Open to Opportunities"
-let currentStatus = "Open to Opportunities";
-
-function updateStatus() {
-    const dot = document.querySelector(".status-dot");
-    const text = document.getElementById("statusText");
-
-    if (currentStatus === "Actively Employed") {
-        text.textContent = "Actively Employed";
-        dot.style.background = "#4da3ff";
-        dot.style.boxShadow = "0 0 6px #4da3ff";
-    }
-    else if (currentStatus === "Out of Office") {
-        text.textContent = "Out of Office";
-        dot.style.background = "#ffc400";
-        dot.style.boxShadow = "0 0 6px #ffc400";
-    }
-    else if (currentStatus === "Open to Opportunities") {
-        text.textContent = "Open to Opportunities";
-        dot.style.background = "#00ff87";
-        dot.style.boxShadow = "0 0 6px #00ff87";
-    }
-}
-
-updateStatus();
-
-/* ==============================
-   HIRE ME → Scroll to Contact
-================================= */
-function scrollToContact() {
-    document.querySelector("#contact").scrollIntoView({ 
-        behavior: "smooth" 
+if (certNext) {
+    certNext.addEventListener("click", () => {
+        certCarousel.scrollBy({ left: 220, behavior: "smooth" });
     });
 }
+
+if (certPrev) {
+    certPrev.addEventListener("click", () => {
+        certCarousel.scrollBy({ left: -220, behavior: "smooth" });
+    });
+}
+
+/* ==========================
+   HIRE → CONTACT SCROLL
+========================== */
+function scrollToContact() {
+    const contact = document.querySelector("#contact");
+    if (contact) {
+        contact.scrollIntoView({ behavior: "smooth" });
+    }
+}
+window.scrollToContact = scrollToContact;
