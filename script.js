@@ -148,4 +148,30 @@ document.querySelectorAll("a[href^='#']").forEach(anchor => {
 });
 
 
+// ===================== OPEN PDF =====================
+function openPDF(path) {
+    console.log("Opening PDF:", path);
+
+    const overlay = document.getElementById("pdfOverlay");
+    const frame = document.getElementById("pdfFrame");
+
+    frame.src = path;
+    overlay.style.display = "flex";
+}
+
+// ===================== CLOSE PDF =====================
+function closePDF() {
+    const overlay = document.getElementById("pdfOverlay");
+    const frame = document.getElementById("pdfFrame");
+
+    overlay.style.display = "none";
+    frame.src = "";
+}
+
+// ===================== SCROLL CERTIFICATES =====================
+function moveCert(direction) {
+    const carousel = document.getElementById("certCarousel");
+    carousel.scrollLeft += direction * 350;
+}
+
 
