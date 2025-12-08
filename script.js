@@ -1,24 +1,23 @@
 /* ============================================================
    ACTIVE SIDEBAR LINK ON SCROLL
 ============================================================ */
+// Active sidebar highlight
 const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll(".nav-link");
+const navLinks = document.querySelectorAll(".nav-links a");
 
 window.addEventListener("scroll", () => {
     let current = "";
 
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 180;
-
-        if (scrollY >= sectionTop) {
-            current = section.getAttribute("id");
+    sections.forEach(sec => {
+        const top = window.scrollY;
+        if (top >= sec.offsetTop - 150) {
+            current = sec.getAttribute("id");
         }
     });
 
     navLinks.forEach(link => {
         link.classList.remove("active");
-
-        if (link.getAttribute("href") === `#${current}`) {
+        if (link.getAttribute("href").includes(current)) {
             link.classList.add("active");
         }
     });
@@ -173,4 +172,5 @@ function reveal() {
 
 window.addEventListener('scroll', reveal);
 window.addEventListener('load', reveal);
+
 
