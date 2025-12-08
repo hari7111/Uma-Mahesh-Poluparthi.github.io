@@ -81,23 +81,19 @@ h2 {
    SIDEBAR + MOBILE MENU
 ============================================================ */
 .sidebar {
-    width: 180px;
-    background: rgba(0,0,0,0.55);
-    border-right: 1px solid rgba(0,255,150,0.12);
+    width: 160px;                    /* smaller width */
+    background: rgba(0,0,0,0.35);    /* lighter background */
+    border-right: 1px solid rgba(0,255,150,0.08);
     position: fixed;
     left: 0;
     top: 0;
-    bottom: 0;            /* allows auto height */
-    padding: 10px 14px;
-    backdrop-filter: blur(6px);
-
-    height: auto;        /* dynamic height */
-    min-height: 100%;    /* at least content height */
+    bottom: 0;
+    padding: 10px 12px;              /* small padding */
+    backdrop-filter: blur(4px);
 
     overflow-y: auto;
     overflow-x: hidden;
 }
-
 
 .sidebar::-webkit-scrollbar {
     width: 6px;
@@ -113,34 +109,27 @@ h2 {
 }
 
 .sidebar ul {
-    margin-top: 10px;           /* reduce empty space at top */
+    margin-top: 5px;
 }
 
 .sidebar ul li {
-    margin-bottom: 6px;         /* reduce spacing between items */
+    margin-bottom: 4px;    /* tighter spacing */
 }
 
 .sidebar ul li a {
-    display: block;
-    padding: 6px 4px;           /* was too tall earlier */
-    font-size: 0.9rem;          /* slightly smaller */
-    color: #dcdcdc;
-    transition: 0.25s ease;
+    font-size: 0.85rem;     /* smaller text */
+    padding: 4px 3px;       /* smaller padding */
+    line-height: 1.2;       /* tighter line height */
 }
 
-
 .logo {
-    font-size: 38px;
-    font-weight: 700;
+    font-size: 1.2rem;
+    font-weight: 600;
     text-align: center;
     color: var(--accent);
-    margin-bottom: 45px;
+    margin-bottom: 10px;
 }
 
-.logo {
-    margin-bottom: 10px;     /* reduce wasted vertical space */
-    font-size: 1.6rem;       /* optional: smaller logo text */
-}
 
 .nav-link {
     display: block;
@@ -581,6 +570,7 @@ h2 {
     .contact-options { flex-direction: column; }
     .section { padding: 25px 18px; }
 }
+
 
 
 
