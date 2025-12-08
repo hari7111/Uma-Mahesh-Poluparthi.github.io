@@ -82,14 +82,17 @@ h2 {
 ============================================================ */
 .sidebar {
     width: 180px;
-    height: 100vh;
     background: rgba(0,0,0,0.55);
-    border-right: 1px solid rgba(0,255,150,0.10);
+    border-right: 1px solid rgba(0,255,150,0.12);
     position: fixed;
     left: 0;
     top: 0;
-    padding: 15px 14px;         /* reduced from 25px */
+    bottom: 0;            /* allows auto height */
+    padding: 10px 14px;
     backdrop-filter: blur(6px);
+
+    height: auto;        /* dynamic height */
+    min-height: 100%;    /* at least content height */
 
     overflow-y: auto;
     overflow-x: hidden;
@@ -578,6 +581,7 @@ h2 {
     .contact-options { flex-direction: column; }
     .section { padding: 25px 18px; }
 }
+
 
 
 
