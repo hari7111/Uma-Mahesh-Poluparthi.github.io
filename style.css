@@ -270,22 +270,28 @@ h2 {
 }
 
 .cert-card {
-    min-width: 260px;
-    scroll-snap-align: center;
-    padding: 28px;
-    border-radius: 18px;
-    background: rgba(0,255,180,0.05);
-    border: 1px solid rgba(0,255,180,0.15);
-    text-align: center;
+    min-width: 340px;        /* bigger width */
+    min-height: 140px;       /* bigger height */
+    padding: 32px 28px;      /* more padding */
+    border-radius: 22px;
+    background: rgba(0,255,180,0.06);
+    border: 1px solid rgba(0,255,180,0.22);
+    text-align: left;        /* better alignment */
+    font-size: 20px;         /* larger text */
+    display: flex;
+    align-items: center;     /* center vertically */
+    gap: 14px;               /* spacing for icon/text */
     cursor: pointer;
     transition: 0.3s ease;
+    box-shadow: 0 0 25px rgba(0,255,180,0.18);
 }
 
 .cert-card:hover {
     transform: translateY(-8px);
     border-color: var(--accent);
-    box-shadow: 0 0 20px rgba(0,255,180,0.25);
+    box-shadow: 0 0 35px rgba(0,255,180,0.35);
 }
+
 
 /* ARROWS */
 .cert-arrow {
@@ -754,5 +760,6 @@ body {
 body.fade-in {
     opacity: 1;
 }
+
 
 
