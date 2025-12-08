@@ -1,5 +1,5 @@
 /* ============================================================
-   SIDEBAR ACTIVE LINK HIGHLIGHT ON SCROLL
+   ACTIVE SIDEBAR LINK ON SCROLL
 ============================================================ */
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll(".nav-link");
@@ -8,7 +8,8 @@ window.addEventListener("scroll", () => {
     let current = "";
 
     sections.forEach(section => {
-        const sectionTop = section.offsetTop - 150;
+        const sectionTop = section.offsetTop - 180;
+
         if (scrollY >= sectionTop) {
             current = section.getAttribute("id");
         }
@@ -16,6 +17,7 @@ window.addEventListener("scroll", () => {
 
     navLinks.forEach(link => {
         link.classList.remove("active");
+
         if (link.getAttribute("href") === `#${current}`) {
             link.classList.add("active");
         }
@@ -23,38 +25,56 @@ window.addEventListener("scroll", () => {
 });
 
 
+/* ============================================================
+   MOBILE SIDEBAR TOGGLE
+============================================================ */
+function toggleMenu() {
+    document.getElementById("sidebar").classList.toggle("show");
+}
+
 
 /* ============================================================
-   CERTIFICATE CAROUSEL (LEFT/RIGHT ARROWS)
+   CERTIFICATE CAROUSEL
 ============================================================ */
 function moveCert(direction) {
     const carousel = document.getElementById("certCarousel");
     carousel.scrollBy({
-        left: direction * 300,
+        left: direction * 350,
         behavior: "smooth"
     });
 }
 
 
-
 /* ============================================================
-   PDF VIEWER POPUP
+   PDF VIEWER
 ============================================================ */
-function openPDF(file) {
-    document.getElementById("pdfFrame").src = file;
-    document.getElementById("pdfOverlay").classList.add("show");
+function openPDF(path) {
+    const overlay = document.getElementById("pdfOverlay");
+    const frame = document.getElementById("pdfFrame");
+
+    frame.src = path;
+    overlay.style.display = "flex";
 }
 
 function closePDF() {
-    document.getElementById("pdfOverlay").classList.remove("show");
+    const overlay = document.getElementById("pdfOverlay");
+    const frame = document.getElementById("pdfFrame");
+
+    overlay.style.display = "none";
+    frame.src = "";
 }
 
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+        closePDF();
+    }
+});
 
 
 /* ============================================================
-   FEEDBACK MESSAGE (AUTO HIDE)
+   FEEDBACK SUBMISSION MESSAGE
 ============================================================ */
-function sendFeedback(event) {
+function feedbackSubmit(event) {
     event.preventDefault();
 
     const msg = document.getElementById("feedbackMsg");
@@ -62,13 +82,13 @@ function sendFeedback(event) {
 
     setTimeout(() => {
         msg.classList.remove("show");
-    }, 3000);
+        event.target.submit();
+    }, 1500);
 }
 
 
-
 /* ============================================================
-   TYPING ANIMATION
+   TYPING ANIMATION (Smooth, No Flicker)
 ============================================================ */
 const typingText = [
     "Multi-NDT Technician",
@@ -78,56 +98,48 @@ const typingText = [
     "Quality Inspection Specialist"
 ];
 
-let typingIndex = 0;
-let charIndex = 0;
+let tIndex = 0;
+let cIndex = 0;
+let isDeleting = false;
 
 function typeEffect() {
-    const typeEl = document.getElementById("typing");
-    if (!typeEl) return;
+    const el = document.getElementById("typing");
+    const text = typingText[tIndex];
 
-    const text = typingText[typingIndex];
+    if (!el) return;
 
-    typeEl.textContent = text.substring(0, charIndex);
-    charIndex++;
-
-    if (charIndex > text.length) {
-        setTimeout(eraseEffect, 1300);
+    if (!isDeleting) {
+        el.textContent = text.substring(0, cIndex++);
+        if (cIndex > text.length) {
+            isDeleting = true;
+            setTimeout(typeEffect, 1200);
+            return;
+        }
     } else {
-        setTimeout(typeEffect, 100);
+        el.textContent = text.substring(0, cIndex--);
+        if (cIndex < 0) {
+            isDeleting = false;
+            tIndex = (tIndex + 1) % typingText.length;
+        }
     }
-}
 
-function eraseEffect() {
-    const typeEl = document.getElementById("typing");
-    const text = typingText[typingIndex];
-
-    typeEl.textContent = text.substring(0, charIndex);
-    charIndex--;
-
-    if (charIndex < 0) {
-        typingIndex = (typingIndex + 1) % typingText.length;
-        setTimeout(typeEffect, 400);
-    } else {
-        setTimeout(eraseEffect, 50);
-    }
+    setTimeout(typeEffect, isDeleting ? 50 : 90);
 }
 
 window.addEventListener("load", typeEffect);
 
 
-
 /* ============================================================
-   GALLERY SCROLL (HORIZONTAL)
+   GALLERY HORIZONTAL SCROLL
 ============================================================ */
 const gallery = document.querySelector(".gallery-scroll");
 
 if (gallery) {
     gallery.addEventListener("wheel", (evt) => {
         evt.preventDefault();
-        gallery.scrollLeft += evt.deltaY;
+        gallery.scrollLeft += evt.deltaY * 1.2;
     });
 }
-
 
 
 /* ============================================================
@@ -135,10 +147,10 @@ if (gallery) {
 ============================================================ */
 document.querySelectorAll("a[href^='#']").forEach(anchor => {
     anchor.addEventListener("click", function(event) {
-        event.preventDefault();
-
         const target = document.querySelector(this.getAttribute("href"));
         if (!target) return;
+
+        event.preventDefault();
 
         window.scrollTo({
             top: target.offsetTop - 20,
@@ -146,32 +158,3 @@ document.querySelectorAll("a[href^='#']").forEach(anchor => {
         });
     });
 });
-
-
-// ===================== OPEN PDF =====================
-function openPDF(path) {
-    console.log("Opening PDF:", path);
-
-    const overlay = document.getElementById("pdfOverlay");
-    const frame = document.getElementById("pdfFrame");
-
-    frame.src = path;
-    overlay.style.display = "flex";
-}
-
-// ===================== CLOSE PDF =====================
-function closePDF() {
-    const overlay = document.getElementById("pdfOverlay");
-    const frame = document.getElementById("pdfFrame");
-
-    overlay.style.display = "none";
-    frame.src = "";
-}
-
-// ===================== SCROLL CERTIFICATES =====================
-function moveCert(direction) {
-    const carousel = document.getElementById("certCarousel");
-    carousel.scrollLeft += direction * 350;
-}
-
-

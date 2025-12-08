@@ -1,5 +1,5 @@
 /* ============================================================
-   GLOBAL THEME
+   GLOBAL THEME — PREMIUM SOFT GLOW
 ============================================================ */
 * {
     margin: 0;
@@ -11,146 +11,210 @@
 body {
     background: #0c0c0c;
     color: white;
-    padding-left: 220px; /* space for sidebar */
-}
-
-.light {
-    background: #f4f4f4;
-    color: #111;
+    padding-left: 230px; /* for sidebar */
+    overflow-x: hidden;
 }
 
 h2 {
     font-size: 32px;
-    margin-bottom: 35px;
+    margin-bottom: 28px;
     font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
+/* Soft Glow Accent */
+:root {
+    --accent: #00ffb3;
+    --accent-soft: rgba(0,255,180,0.35);
+    --glass-bg: rgba(255,255,255,0.03);
+    --glass-border: rgba(255,255,255,0.15);
+}
+
+/* Fade Animations */
+.fade-in {
+    opacity: 0;
+    transform: translateY(25px);
+    animation: fadeInUp 0.9s ease forwards;
+}
+
+.fade-up {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
 
 /* ============================================================
-   SIDEBAR
+   PREMIUM GLASS SECTIONS
+============================================================ */
+.section {
+    max-width: 1100px;
+    margin: 80px auto;
+    padding: 60px 50px;
+    border-radius: 24px;
+}
+
+.glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 25px rgba(0,255,180,0.05);
+    transition: 0.3s ease;
+}
+
+.glass:hover {
+    box-shadow: 0 0 35px rgba(0,255,180,0.15);
+}
+
+/* ============================================================
+   SIDEBAR + MOBILE MENU
 ============================================================ */
 .sidebar {
-    width: 220px;
+    width: 230px;
     height: 100vh;
-    background: #101010;
-    border-right: 1px solid rgba(0,255,100,0.2);
+    background: rgba(0,0,0,0.7);
+    border-right: 1px solid rgba(0,255,150,0.15);
     position: fixed;
-    top: 0;
     left: 0;
+    top: 0;
     padding: 25px;
+    backdrop-filter: blur(6px);
 }
 
 .logo {
     font-size: 38px;
     font-weight: 700;
-    color: #00ff99;
-    margin-bottom: 35px;
     text-align: center;
-}
-
-.sidebar nav {
-    display: flex;
-    flex-direction: column;
+    color: var(--accent);
+    margin-bottom: 45px;
 }
 
 .nav-link {
-    padding: 12px 0;
-    color: #bbb;
+    display: block;
+    padding: 14px 5px;
+    margin-bottom: 8px;
     text-decoration: none;
-    transition: 0.2s;
+    color: #bbb;
+    font-size: 17px;
+    transition: 0.25s ease;
+    border-left: 3px solid transparent;
 }
 
-.nav-link:hover,
+.nav-link:hover {
+    color: var(--accent);
+    padding-left: 12px;
+}
+
 .nav-link.active {
-    color: #00ff99;
+    color: var(--accent);
+    border-left: 3px solid var(--accent);
+    padding-left: 10px;
 }
 
-
+/* Mobile Menu Button */
+.mobile-menu-btn {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 32px;
+    color: var(--accent);
+    z-index: 2000;
+    cursor: pointer;
+}
 
 /* ============================================================
-   MAIN SECTIONS
-============================================================ */
-.section {
-    max-width: 1100px;
-    margin: 90px auto;
-    padding: 70px 50px;
-}
-
-.glass {
-    background: rgba(0, 255, 120, 0.03);
-    border: 1px solid rgba(0, 255, 120, 0.15);
-    border-radius: 20px;
-    backdrop-filter: blur(6px);
-    margin-bottom: 80px;
-}
-
-
-/* ============================================================
-   HERO SECTION
+   HERO SECTION + PROFILE GLOW
 ============================================================ */
 .hero {
     text-align: center;
-    padding-top: 60px;
+    margin-top: 40px;
+}
+
+.profile-glow {
+    width: 250px;
+    height: 250px;
+    margin: auto;
+    border-radius: 50%;
+    padding: 8px;
+    background: radial-gradient(circle, var(--accent-soft), transparent 70%);
+    animation: glowPulse 3s infinite alternate ease-in-out;
+}
+
+@keyframes glowPulse {
+    from {
+        box-shadow: 0 0 25px rgba(0,255,180,0.25);
+    }
+    to {
+        box-shadow: 0 0 55px rgba(0,255,180,0.45);
+    }
 }
 
 .hero-img {
-    width: 220px;
-    height: 220px;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
-    border: 4px solid #00ff99;
-    margin-bottom: 25px;
+    object-fit: cover;
 }
 
 .hero-buttons {
     margin-top: 25px;
     display: flex;
-    gap: 15px;
     justify-content: center;
+    gap: 18px;
 }
 
-
-/* ============================================================
-   BUTTONS
-============================================================ */
+/* Buttons */
 .btn {
-    padding: 14px 28px;
+    padding: 14px 30px;
     border-radius: 14px;
-    border: 1px solid #00ff99;
-    background: rgba(0,255,150,0.15);
+    border: 1px solid var(--accent);
+    background: rgba(0,255,180,0.12);
     color: white;
-    text-decoration: none;
     font-size: 17px;
-    transition: 0.2s;
+    text-decoration: none;
+    transition: 0.28s ease;
 }
 
 .btn:hover {
-    background: #00ff99;
-    color: black;
+    background: var(--accent);
+    color: #111;
+    box-shadow: 0 0 18px rgba(0,255,180,0.55);
 }
-
-.download-btn {
-    margin-top: 30px;
-}
-
-
 
 /* ============================================================
    SKILLS
 ============================================================ */
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
     gap: 22px;
 }
 
 .skill-card {
     padding: 26px 24px;
     border-radius: 16px;
-    background: rgba(0,255,120,0.04);
-    border: 1px solid rgba(0,255,120,0.15);
+    background: rgba(0,255,150,0.05);
+    border: 1px solid rgba(0,255,150,0.15);
+    transition: 0.3s ease;
 }
 
-
+.skill-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent);
+    box-shadow: 0 0 20px rgba(0,255,180,0.2);
+}
 
 /* ============================================================
    GALLERY
@@ -159,183 +223,79 @@ h2 {
     display: flex;
     gap: 20px;
     overflow-x: auto;
-    overflow-y: hidden;
-    padding-bottom: 10px;
+    padding-bottom: 12px;
 }
 
 .gallery-scroll img {
-    height: 220px;
+    height: 230px;
     border-radius: 16px;
+    transition: 0.3s ease;
 }
 
-.gallery-scroll::-webkit-scrollbar {
-    height: 8px;
+.gallery-scroll img:hover {
+    transform: scale(1.05);
 }
-
-.gallery-scroll::-webkit-scrollbar-thumb {
-    background: #00ff99;
-    border-radius: 8px;
-}
-
 
 /* ============================================================
-   CERTIFICATIONS
+   CERTIFICATION CAROUSEL
 ============================================================ */
-.cert-section {}
-
-/* Bigger container so cards & animations are not cut */
 .cert-container {
-    background: rgba(0,255,120,0.05);
-    border: 1px solid rgba(0,255,120,0.15);
+    background: rgba(0,255,180,0.05);
+    border: 1px solid rgba(0,255,180,0.15);
     border-radius: 20px;
-    padding: 55px 45px;
-    min-height: 260px; /* increased height */
+    padding: 45px;
 }
 
-/* Header */
-.cert-header {
-    font-size: 32px;
-    margin-bottom: 45px;
-    font-weight: 700;
-}
-
-/* arrows (same size but now visible + positioned better) */
-.cert-arrow {
-    background: white;
-    border-radius: 10px;
-    padding: 12px 16px;  /* SAME SIZE */
-    cursor: pointer;
-    transition: 0.2s ease;
-    flex-shrink: 0; /* prevents arrow from shrinking or hiding */
-}
-
-.cert-arrow:hover {
-    background: #00ff99;
-}
-
-/* wrapper (more height + spacing) */
 .cert-carousel-wrapper {
     display: flex;
     align-items: center;
     gap: 25px;
-    height: 170px; /* increased height so cards won't clip */
 }
 
-/* scroll area */
+.cert-arrow {
+    background: white;
+    border-radius: 12px;
+    padding: 12px 16px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #111;
+    border: none;
+    transition: 0.25s ease;
+}
+
+.cert-arrow:hover {
+    background: var(--accent);
+    color: #111;
+}
+
 #certCarousel {
     display: flex;
+    gap: 25px;
     overflow-x: auto;
-    gap: 30px;            /* increased spacing */
-    padding: 15px 0;      /* more breathing space */
     scroll-behavior: smooth;
+    padding: 10px 0;
 }
 
-#certCarousel::-webkit-scrollbar {
-    height: 6px;
-}
-#certCarousel::-webkit-scrollbar-thumb {
-    background: #00ff99;
-    border-radius: 10px;
-}
-
-/* certificate card (bigger + centered + no clipping) */
 .cert-card {
-    background: rgba(0,255,120,0.04);
-    border: 1px solid rgba(0,255,120,0.18);
-    border-radius: 20px;
-    padding: 30px 45px;    /* bigger card */
-    min-width: 300px;      /* wider card */
+    min-width: 290px;
+    padding: 30px;
+    border-radius: 18px;
+    background: rgba(0,255,180,0.06);
+    border: 1px solid rgba(0,255,180,0.18);
     text-align: center;
-    font-size: 20px;
+    font-size: 19px;
     cursor: pointer;
-    white-space: nowrap;
     transition: 0.25s ease;
 }
 
 .cert-card:hover {
-    transform: translateY(-8px); /* animation fully visible now */
-    border-color: #00ffaa;
+    transform: translateY(-8px);
+    border-color: var(--accent);
+    box-shadow: 0 0 30px rgba(0,255,180,0.2);
 }
-
 
 /* ============================================================
-   PDF VIEWER POPUP
-============================================================ */
-#pdfOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.85);
-    display: none;
-    justify-content: center;
-    align-items: center;
-}
-
-#pdfOverlay.show {
-    display: flex;
-}
-
-#pdfFrame {
-    width: 80%;
-    height: 80%;
-    border-radius: 14px;
-    border: none;
-}
-
-.pdf-close {
-    position: absolute;
-    top: 25px;
-    right: 35px;
-    font-size: 40px;
-    cursor: pointer;
-}
-
-/* ======================= PDF VIEWER ======================= */
-.pdf-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.85);
-    backdrop-filter: blur(4px);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-}
-
-.pdf-overlay iframe {
-    width: 80%;
-    height: 85%;
-    border: none;
-    background: #111;
-    border-radius: 12px;
-}
-
-.pdf-close {
-    position: absolute;
-    top: 25px;
-    right: 35px;
-    font-size: 40px;
-    cursor: pointer;
-    color: white;
-    font-weight: bold;
-    z-index: 10000;
-    transition: 0.2s ease;
-}
-
-.pdf-close:hover {
-    color: #00ff9d;
-}
-
-
-
-
-/* ============================================================
-   EXPERIENCE
+   TIMELINE / EXPERIENCE
 ============================================================ */
 .timeline {
     display: grid;
@@ -343,13 +303,17 @@ h2 {
 }
 
 .t-card {
-    padding: 38px 30px;
+    padding: 32px;
     border-radius: 16px;
-    background: rgba(0,255,120,0.04);
-    border: 1px solid rgba(0,255,120,0.15);
+    background: rgba(0,255,180,0.06);
+    border: 1px solid rgba(0,255,180,0.18);
+    transition: 0.3s;
 }
 
-
+.t-card:hover {
+    transform: translateX(10px);
+    border-color: var(--accent);
+}
 
 /* ============================================================
    PROJECTS
@@ -360,32 +324,17 @@ h2 {
 }
 
 .project-card {
-    padding: 32px;
+    padding: 34px;
     border-radius: 16px;
-    background: rgba(0,255,120,0.04);
-    border: 1px solid rgba(0,255,120,0.15);
+    background: rgba(0,255,180,0.06);
+    border: 1px solid rgba(0,255,180,0.18);
+    transition: 0.3s ease;
 }
 
-
-
-/* ============================================================
-   CV VIEWER
-============================================================ */
-.pdf-container {
-    width: 100%;
-    height: 600px;
-    margin-bottom: 40px;
-    padding-bottom: 120px; /* Fix overlap */
+.project-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent);
 }
-
-.pdf-container iframe {
-    width: 100%;
-    height: 100%;
-    border-radius: 18px;
-    border: 1px solid rgba(0,255,120,0.15);
-}
-
-
 
 /* ============================================================
    FEEDBACK
@@ -393,25 +342,24 @@ h2 {
 #feedbackForm input,
 #feedbackForm textarea {
     width: 100%;
-    padding: 18px 16px;
-    margin-bottom: 18px;
+    padding: 18px;
     border-radius: 14px;
-    border: 1px solid rgba(0,255,120,0.15);
+    margin-bottom: 18px;
     background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(0,255,180,0.15);
     color: white;
 }
 
 #feedbackMsg {
     opacity: 0;
-    margin-top: 10px;
-    transition: 0.4s;
+    text-align: center;
+    margin-top: 12px;
+    transition: 0.4s ease;
 }
 
 #feedbackMsg.show {
     opacity: 1;
 }
-
-
 
 /* ============================================================
    CONTACT
@@ -423,76 +371,93 @@ h2 {
 
 .contact-card {
     flex: 1;
-    padding: 25px;
-    background: rgba(0,255,120,0.05);
-    border-radius: 14px;
-    border: 1px solid rgba(0,255,120,0.12);
+    padding: 28px;
     text-align: center;
-    color: white;
+    border-radius: 14px;
     text-decoration: none;
-    font-size: 18px;
+    color: white;
+    background: rgba(0,255,180,0.05);
+    border: 1px solid rgba(0,255,180,0.12);
+    transition: 0.3s ease;
 }
 
-
+.contact-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 20px rgba(0,255,180,0.2);
+}
 
 /* ============================================================
    FLOATING CONTACT BUTTON
 ============================================================ */
-
 .floating-contact {
     position: fixed;
     right: 35px;
     bottom: 35px;
-    width: 50px;
-    height: 50px;
+    background: var(--accent);
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
-    background: #00ff99;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 0 25px #00ff99, 0 0 40px #00ff99 inset;
     cursor: pointer;
-    transition: 0.25s ease;
+    box-shadow: 0 0 30px var(--accent-soft);
+    transition: 0.3s ease;
 }
 
 .floating-contact:hover {
-    transform: scale(1.07);
-    box-shadow: 0 0 35px #00ff99, 0 0 55px #00ff99 inset;
+    transform: scale(1.1);
 }
 
-.floating-contact img {
-    width: 30px;      /* Perfect Size */
-    height: 30px;
-    filter: brightness(0) invert(1); /* Makes icon PURE WHITE */
+/* ============================================================
+   PDF OVERLAY
+============================================================ */
+.pdf-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
 }
 
+.pdf-overlay iframe {
+    width: 85%;
+    height: 85%;
+    border-radius: 14px;
+    border: none;
+}
+
+.pdf-close {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    font-size: 38px;
+    cursor: pointer;
+    color: white;
+    transition: 0.3s;
+}
+
+.pdf-close:hover {
+    color: var(--accent);
+}
 
 /* ============================================================
    FOOTER
 ============================================================ */
-footer {
-    text-align: center;
-    padding: 40px;
-    font-size: 15px;
-    color: #bbb;
-}
-
 .site-footer {
     text-align: center;
-    padding: 20px 0;
-    margin-top: 60px;
-    color: #00ffaa;
-    opacity: 0.7;
+    padding: 40px;
+    font-size: 14px;
+    opacity: 0.75;
 }
-
-.site-footer .small-note {
-    font-size: 12px;
-    margin-top: 5px;
-}
-
 
 /* ============================================================
-   MOBILE FIXES
+   MOBILE RESPONSIVE
 ============================================================ */
 @media (max-width: 900px) {
 
@@ -501,29 +466,29 @@ footer {
     }
 
     .sidebar {
-        display: none;
+        left: -260px;
+        transition: 0.3s ease;
+    }
+
+    .sidebar.show {
+        left: 0;
+    }
+
+    .mobile-menu-btn {
+        display: block;
     }
 
     .section {
-        margin: 60px 20px;
-        padding: 50px 25px;
-    }
-
-    .hero-img {
-        width: 160px;
-        height: 160px;
+        padding: 40px 22px;
+        margin: 60px 15px;
     }
 
     .contact-options {
         flex-direction: column;
     }
 
-    #certCarousel {
-        gap: 16px;
+    .hero-img {
+        width: 170px;
+        height: 170px;
     }
 }
-
-
-
-
-

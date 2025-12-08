@@ -2,15 +2,66 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Success</title>
+    <title>Feedback Submitted</title>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Extra styling unique to success page but matching your theme */
+
+        body {
+            background: #0c0c0c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding-left: 0;
+        }
+
+        .success-box {
+            max-width: 500px;
+            text-align: center;
+            padding: 45px 35px;
+            border-radius: 22px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 25px rgba(0,255,180,0.12);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .success-icon {
+            font-size: 70px;
+            color: #00ffb3;
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px rgba(0,255,180,0.6);
+            animation: popIn 0.5s ease forwards;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.4); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .success-box h1 {
+            margin-bottom: 10px;
+            font-size: 28px;
+            color: #ffffff;
+        }
+
+        .success-box p {
+            margin-bottom: 30px;
+            color: #cccccc;
+            font-size: 17px;
+        }
+    </style>
 </head>
 
-<body class="success-body">
+<body>
 
     <div class="success-box glass">
-        <h1>✔ Feedback Submitted Successfully!</h1>
-        <p>Thank you for sharing your feedback.</p>
+        <div class="success-icon">✔</div>
+        <h1>Feedback Submitted Successfully!</h1>
+        <p>Thank you for sharing your feedback. I appreciate your time!</p>
 
         <a href="index.html" class="btn">Back to Portfolio</a>
     </div>

@@ -3,14 +3,30 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Uma Mahesh Portfolio</title>
+
+    <title>Uma Mahesh | Multi-NDT Technician Portfolio</title>
+
+    <!-- SEO -->
+    <meta name="description" content="Portfolio of Uma Mahesh Poluparthi - Multi-NDT Technician (RTFI, MT, PT), Quality Inspection Specialist.">
+    <meta name="keywords" content="NDT, RTFI, MT, PT, Inspector, Welding, Radiographic Testing, Technician">
+    <meta name="author" content="Uma Mahesh Poluparthi">
+
+    <!-- Social Preview -->
+    <meta property="og:title" content="Uma Mahesh Portfolio">
+    <meta property="og:description" content="Certified Multi-NDT Technician | RTFI | MT | PT | Inspection Specialist">
+    <meta property="og:image" content="assets/profile1.png">
+    <meta property="og:type" content="website">
+
     <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
+    <!-- ============================= MOBILE MENU ============================= -->
+    <div class="mobile-menu-btn" onclick="toggleMenu()">☰</div>
+
     <!-- ============================= SIDEBAR ============================= -->
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
         <div class="logo">UM</div>
 
         <nav>
@@ -29,16 +45,18 @@
 
 
     <!-- ============================= HOME ============================= -->
-    <section id="home" class="section glass hero">
+    <section id="home" class="section glass hero fade-in">
         <div class="hero-content">
-            <img src="assets/profile1.png" class="hero-img">
+            <div class="profile-glow">
+                <img src="assets/profile1.png" class="hero-img">
+            </div>
 
-            <h1>Uma Mahesh Poluparthi</h1>
+            <h1 class="fade-up">Uma Mahesh Poluparthi</h1>
             <h3 id="typing"></h3>
 
-            <p class="availability">Open to Opportunities</p>
+            <p class="availability fade-up">Open to Opportunities</p>
 
-            <div class="hero-buttons">
+            <div class="hero-buttons fade-up">
                 <a href="#contact" class="btn">Hire Me</a>
                 <a href="assets/resume.pdf" download class="btn">Download CV</a>
                 <a href="#cv" class="btn">View CV</a>
@@ -48,16 +66,16 @@
 
 
     <!-- ============================= ABOUT ============================= -->
-    <section id="about" class="section glass">
+    <section id="about" class="section glass fade-in">
         <h2>About Me</h2>
         <p>
-            I am a certified Multi-NDT Technician specializing in Radiographic Film Interpretation (RTFI), Magnetic Testing (MT), Penetrant Testing (PT).
+            I am a certified Multi-NDT Technician specializing in Radiographic Film Interpretation (RTFI), Magnetic Testing (MT), and Penetrant Testing (PT).
         </p>
     </section>
 
 
     <!-- ============================= SKILLS ============================= -->
-    <section id="skills" class="section glass">
+    <section id="skills" class="section glass fade-in">
         <h2>Skills</h2>
 
         <div class="skills-grid">
@@ -72,27 +90,25 @@
 
 
     <!-- ============================= GALLERY ============================= -->
-    <section id="gallery" class="section glass">
+    <section id="gallery" class="section glass fade-in">
         <h2>Gallery</h2>
 
         <div class="gallery-scroll">
-            <img src="assets/gallery/img2.jpg">
-            <img src="assets/gallery/img3.jpg">
-            <img src="assets/gallery/img4.jpg">
-            <img src="assets/gallery/img5.jpg">
+            <img src="assets/gallery/img2.jpg" loading="lazy">
+            <img src="assets/gallery/img3.jpg" loading="lazy">
+            <img src="assets/gallery/img4.jpg" loading="lazy">
+            <img src="assets/gallery/img5.jpg" loading="lazy">
         </div>
     </section>
 
 
     <!-- ============================= CERTIFICATIONS ============================= -->
-    <section id="certifications" class="section glass cert-section">
+    <section id="certifications" class="section glass fade-in">
         <h2 class="cert-header">Certifications</h2>
 
         <div class="cert-container">
-
             <div class="cert-carousel-wrapper">
-
-                <div class="cert-arrow" onclick="moveCert(-1)">❮</div>
+                <button class="cert-arrow" onclick="moveCert(-1)">❮</button>
 
                 <div id="certCarousel">
                     <div class="cert-card" onclick="openPDF('assets/certificates/rtfi.pdf')">📄 RTFI Certificate</div>
@@ -104,28 +120,27 @@
                     <div class="cert-card" onclick="openPDF('assets/certificates/wah.pdf')">📄 WAH Certificate</div>
                 </div>
 
-                <div class="cert-arrow" onclick="moveCert(1)">❯</div>
-
+                <button class="cert-arrow" onclick="moveCert(1)">❯</button>
             </div>
         </div>
     </section>
 
 
     <!-- ============================= EXPERIENCE ============================= -->
-    <section id="experience" class="section glass">
+    <section id="experience" class="section glass fade-in">
         <h2>Experience Timeline</h2>
 
         <div class="timeline">
             <div class="t-card"><strong>2022</strong><br>NDT Technician Trainee</div>
             <div class="t-card"><strong>2023</strong><br>Became Level II Technician</div>
-            <div class="t-card"><strong>2024</strong><br>Promoted to RT Co-Ordinator</div>
+            <div class="t-card"><strong>2024</strong><br>Promoted to RT Coordinator</div>
             <div class="t-card"><strong>2025</strong><br>3+ Years Industry Experience</div>
         </div>
     </section>
 
 
     <!-- ============================= PROJECTS ============================= -->
-    <section id="projects" class="section glass">
+    <section id="projects" class="section glass fade-in">
         <h2>Projects</h2>
 
         <div class="projects-list">
@@ -137,7 +152,7 @@
 
 
     <!-- ============================= CV VIEWER ============================= -->
-    <section id="cv" class="section glass">
+    <section id="cv" class="section glass fade-in">
         <h2>My CV</h2>
 
         <div class="pdf-container">
@@ -149,14 +164,20 @@
 
 
     <!-- ============================= FEEDBACK ============================= -->
-    <section id="feedback" class="section glass">
+    <section id="feedback" class="section glass fade-in">
         <h2>Your Feedback</h2>
 
         <form action="https://formsubmit.co/umamahe113@gmail.com"
-          method="POST" id="feedbackForm">
-            <input type="text" placeholder="Your Name">
-            <input type="email" placeholder="Email (optional)">
-            <textarea placeholder="Your Feedback"></textarea>
+              method="POST" id="feedbackForm" onsubmit="return feedbackSubmit(event)">
+
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="success.html">
+
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Email (optional)">
+            <textarea name="message" placeholder="Your Feedback" required></textarea>
+
             <button class="btn" type="submit">Submit</button>
         </form>
 
@@ -165,7 +186,7 @@
 
 
     <!-- ============================= CONTACT ============================= -->
-    <section id="contact" class="section glass">
+    <section id="contact" class="section glass fade-in">
         <h2>Contact</h2>
 
         <div class="contact-options">
@@ -178,31 +199,23 @@
 
     <!-- FLOATING CONTACT BUTTON -->
     <a href="https://wa.me/6304202170" class="floating-contact">
-    <img src="assets/icons/Whatsapp.svg" alt="WhatsApp">
-</a>
-
+        <img src="assets/icons/Whatsapp.svg" alt="WhatsApp">
+    </a>
 
 
     <!-- FOOTER -->
     <footer class="site-footer">
-    <p>© 2025 Uma Mahesh Poluparthi</p>
-    <p class="small-note">MIT Licensed Code — All Rights Reserved Content</p>
-</footer>
-    
-<!-- =================== PDF VIEWER =================== -->
-<div id="pdfOverlay" class="pdf-overlay">
-    <span onclick="closePDF()" class="pdf-close">✖</span>
-    <iframe id="pdfFrame"></iframe>
-</div>
+        <p>© 2025 Uma Mahesh Poluparthi</p>
+        <p class="small-note">MIT Licensed Code — All Rights Reserved Content</p>
+    </footer>
 
+
+    <!-- PDF OVERLAY -->
+    <div id="pdfOverlay" class="pdf-overlay">
+        <span onclick="closePDF()" class="pdf-close">✖</span>
+        <iframe id="pdfFrame"></iframe>
+    </div>
 
     <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
