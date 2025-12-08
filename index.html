@@ -7,56 +7,63 @@
     <title>Uma Mahesh | Multi-NDT Technician Portfolio</title>
 
     <!-- SEO -->
-    <meta name="description" content="Portfolio of Uma Mahesh Poluparthi - Multi-NDT Technician (RTFI, MT, PT), Quality Inspection Specialist.">
-    <meta name="keywords" content="NDT, RTFI, MT, PT, Inspector, Welding, Radiographic Testing, Technician">
-    <meta name="author" content="Uma Mahesh Poluparthi">
+    <meta name="description" content="Portfolio of Uma Mahesh Poluparthi - Certified Multi-NDT Technician (RTFI, MT, PT) and Quality Inspection Specialist.">
+    <meta name="keywords" content="NDT, RTFI, MT, PT, Technician, Inspector, Radiographic Testing, QC, Film Interpretation">
+    <link rel="canonical" href="https://umamahesh-portfolio.com">
 
-    <!-- Social Preview -->
-    <meta property="og:title" content="Uma Mahesh Portfolio">
-    <meta property="og:description" content="Certified Multi-NDT Technician | RTFI | MT | PT | Inspection Specialist">
-    <meta property="og:image" content="assets/profile1.png">
-    <meta property="og:type" content="website">
-    <!-- SEO Meta Tags -->
-<meta name="description" content="Portfolio of Uma Mahesh Poluparthi, a certified Multi-NDT Technician specializing in RTFI Level II, MT Level II, PT Level II, quality inspection, defect identification and industrial safety.">
-<meta name="keywords" content="Uma Mahesh, NDT, RTFI Level II, MT Level II, PT Level II, Non Destructive Testing, Inspector, Radiography, Industrial Inspection, Welding, Quality Control, Film Interpretation, NDT Technician India">
-<meta name="author" content="Uma Mahesh Poluparthi">
-
-<!-- Canonical Link -->
-<link rel="canonical" href="https://umamahesh-portfolio.com">
+    <!-- GOOGLE ANALYTICS -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){ dataLayer.push(arguments); }
+        gtag("js", new Date());
+        gtag("config", "G-XXXXX");
+    </script>
 
     <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-    <!-- ============================= MOBILE MENU ============================= -->
-    <div class="mobile-menu-btn" onclick="toggleMenu()">☰</div>
+    <!-- 🔥 NEON PARTICLE BACKGROUND CANVAS -->
+    <canvas id="particleCanvas"></canvas>
 
-    <!-- ============================= SIDEBAR ============================= -->
-   <div class="sidebar">
-    <h2 class="logo">UM</h2>
+    <!-- ==================== NAVBAR ==================== -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">UM</div>
 
-    <ul class="nav-links">
-        <li><a href="#home"><span class="icon">🏠</span> Home</a></li>
-        <li><a href="#about"><span class="icon">👤</span> About</a></li>
-        <li><a href="#skills"><span class="icon">⭐</span> Skills</a></li>
-        <li><a href="#gallery"><span class="icon">🖼️</span> Gallery</a></li>
-        <li><a href="#certifications"><span class="icon">📜</span> Certifications</a></li>
-        <li><a href="#experience"><span class="icon">🧪</span> Experience</a></li>
-        <li><a href="#projects"><span class="icon">📁</span> Projects</a></li>
-        <li><a href="#cv"><span class="icon">📄</span> CV</a></li>
-        <li><a href="#feedback"><span class="icon">📝</span> Feedback</a></li>
-    </ul>
-</div>
+            <nav class="nav-links" id="navMenu">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#certifications">Certifications</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#cv">CV</a>
+                <a href="#feedback">Feedback</a>
+                <a href="#contact">Contact</a>
+            </nav>
 
-    <!-- ============================= HOME ============================= -->
-    <section id="home" class="section glass hero fade-in">
+            <!-- 🌗 Light/Dark Mode Toggle -->
+            <div class="theme-toggle" onclick="toggleTheme()">🌙</div>
+
+            <div class="hamburger" onclick="toggleNav()">☰</div>
+        </div>
+    </header>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section id="home" class="section glass fade-in hero">
         <div class="hero-content">
-            <div class="profile-glow">
-                <img src="assets/profile1.png" class="hero-img">
+
+            <div class="hero-floating">
+                <div class="profile-glow">
+                    <img src="assets/profile1.png" class="hero-img" loading="lazy">
+                </div>
             </div>
 
-            <h1 class="fade-up">Uma Mahesh Poluparthi</h1>
+            <h1 class="hero-title">Uma Mahesh Poluparthi</h1>
             <h3 id="typing"></h3>
 
             <p class="availability fade-up">Open to Opportunities</p>
@@ -69,8 +76,7 @@
         </div>
     </section>
 
-
-    <!-- ============================= ABOUT ============================= -->
+    <!-- ==================== ABOUT ==================== -->
     <section id="about" class="section glass fade-in">
         <h2>About Me</h2>
         <p>
@@ -79,7 +85,7 @@
     </section>
 
 
-    <!-- ============================= SKILLS ============================= -->
+    <!-- ==================== SKILLS ==================== -->
     <section id="skills" class="section glass fade-in">
         <h2>Skills</h2>
 
@@ -94,22 +100,22 @@
     </section>
 
 
-    <!-- ============================= GALLERY ============================= -->
+    <!-- ==================== GALLERY (ZOOM VIEW ENABLED) ==================== -->
     <section id="gallery" class="section glass fade-in">
         <h2>Gallery</h2>
 
         <div class="gallery-scroll">
-            <img src="assets/gallery/img2.jpg" loading="lazy">
-            <img src="assets/gallery/img3.jpg" loading="lazy">
-            <img src="assets/gallery/img4.jpg" loading="lazy">
-            <img src="assets/gallery/img5.jpg" loading="lazy">
+            <img src="assets/gallery/img2.jpg" class="zoomable" loading="lazy">
+            <img src="assets/gallery/img3.jpg" class="zoomable" loading="lazy">
+            <img src="assets/gallery/img4.jpg" class="zoomable" loading="lazy">
+            <img src="assets/gallery/img5.jpg" class="zoomable" loading="lazy">
         </div>
     </section>
 
 
-    <!-- ============================= CERTIFICATIONS ============================= -->
+    <!-- ==================== CERTIFICATIONS (AUTO SLIDER) ==================== -->
     <section id="certifications" class="section glass fade-in">
-        <h2 class="cert-header">Certifications</h2>
+        <h2>Certifications</h2>
 
         <div class="cert-container">
             <div class="cert-carousel-wrapper">
@@ -127,11 +133,14 @@
 
                 <button class="cert-arrow" onclick="moveCert(1)">❯</button>
             </div>
+
+            <!-- Auto-slider indicator -->
+            <div class="cert-progress"></div>
         </div>
     </section>
 
 
-    <!-- ============================= EXPERIENCE ============================= -->
+    <!-- ==================== EXPERIENCE ==================== -->
     <section id="experience" class="section glass fade-in">
         <h2>Experience Timeline</h2>
 
@@ -144,19 +153,28 @@
     </section>
 
 
-    <!-- ============================= PROJECTS ============================= -->
+    <!-- ==================== PROJECTS (WITH MODAL) ==================== -->
     <section id="projects" class="section glass fade-in">
         <h2>Projects</h2>
 
         <div class="projects-list">
-            <div class="project-card">Pressure Vessel Radiographic Inspection</div>
-            <div class="project-card">MT & PT Surface Crack Inspection</div>
-            <div class="project-card">Structural Steel Radiographic Testing</div>
+            <div class="project-card" onclick="openProject(1)">Pressure Vessel Radiographic Inspection</div>
+            <div class="project-card" onclick="openProject(2)">MT & PT Surface Crack Inspection</div>
+            <div class="project-card" onclick="openProject(3)">Structural Steel Radiographic Testing</div>
         </div>
     </section>
 
+    <!-- PROJECT MODAL -->
+    <div id="projectModal" class="project-modal">
+        <div class="project-modal-content">
+            <span class="modal-close" onclick="closeProject()">✖</span>
+            <h2 id="projectTitle"></h2>
+            <p id="projectDescription"></p>
+        </div>
+    </div>
 
-    <!-- ============================= CV VIEWER ============================= -->
+
+    <!-- ==================== CV VIEWER ==================== -->
     <section id="cv" class="section glass fade-in">
         <h2>My CV</h2>
 
@@ -164,33 +182,33 @@
             <iframe src="assets/resume.pdf"></iframe>
         </div>
 
-        <a href="assets/resume.pdf" download class="btn download-btn">Download CV</a>
+        <a href="assets/resume.pdf" download class="btn">Download CV</a>
     </section>
 
 
-    <!-- ============================= FEEDBACK ============================= -->
+    <!-- ==================== FEEDBACK ==================== -->
     <section id="feedback" class="section glass fade-in">
         <h2>Your Feedback</h2>
 
-        <form action="https://formsubmit.co/umamahe113@gmail.com"
-      method="POST" id="feedbackForm" onsubmit="return feedbackSubmit(event)">
+        <form action="https://formsubmit.co/admin@umamahesh-portfolio.com"
+              method="POST" id="feedbackForm" onsubmit="return feedbackSubmit(event)">
 
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_next" value="https://umamahesh-portfolio.com/success.html">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://umamahesh-portfolio.com/success.html">
 
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Email (optional)">
-    <textarea name="message" placeholder="Your Feedback" required></textarea>
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Email (optional)">
+            <textarea name="message" placeholder="Your Feedback" required></textarea>
 
-    <button class="btn" type="submit">Submit</button>
-</form>
+            <button class="btn" type="submit">Submit</button>
+        </form>
 
         <p id="feedbackMsg">✔ Feedback Sent!</p>
     </section>
 
 
-    <!-- ============================= CONTACT ============================= -->
+    <!-- ==================== CONTACT ==================== -->
     <section id="contact" class="section glass fade-in">
         <h2>Contact</h2>
 
@@ -202,17 +220,17 @@
     </section>
 
 
-    <!-- FLOATING CONTACT BUTTON -->
+    <!-- FULLSCREEN IMAGE ZOOM VIEWER -->
+    <div id="imageZoom" class="zoom-overlay">
+        <span class="zoom-close" onclick="closeZoom()">✖</span>
+        <img id="zoomImage">
+    </div>
+
+
+    <!-- FLOATING WHATSAPP BUTTON -->
     <a href="https://wa.me/6304202170" class="floating-contact">
         <img src="assets/icons/Whatsapp.svg" alt="WhatsApp">
     </a>
-
-
-    <!-- FOOTER -->
-    <footer class="site-footer">
-        <p>© 2025 Uma Mahesh Poluparthi</p>
-        <p class="small-note">MIT Licensed Code — All Rights Reserved Content</p>
-    </footer>
 
 
     <!-- PDF OVERLAY -->
@@ -221,9 +239,17 @@
         <iframe id="pdfFrame"></iframe>
     </div>
 
+
+    <!-- VISITOR COUNTER -->
+    <div class="visitor-box">
+        👤 Visitors: <span id="visitorCount">Loading...</span>
+    </div>
+
+
+    <footer class="site-footer">
+        <p>© 2025 Uma Mahesh Poluparthi</p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
-
-
-
