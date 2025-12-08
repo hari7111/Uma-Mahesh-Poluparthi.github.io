@@ -3,38 +3,43 @@
 ============================================================ */
 window.addEventListener("load", () => {
     document.body.classList.add("fade-in");
+    applySavedTheme(); // ensure theme & icon correct on load
 });
 
 /* ============================================================
    NAVBAR MOBILE TOGGLE
 ============================================================ */
+function toggleNav() {
+    document.getElementById("navMenu").classList.toggle("show");
+}
 
 /* ============================================================
    THEME SYSTEM (LIGHT / DARK MODE)
 ============================================================ */
-
 function applySavedTheme() {
     const saved = localStorage.getItem("theme");
+    const toggleBtn = document.querySelector(".theme-toggle");
+
+    if (!toggleBtn) return;
 
     if (saved === "light") {
         document.body.classList.add("light-mode");
-        document.querySelector(".theme-toggle").textContent = "☀️";
+        toggleBtn.textContent = "☀️";
+    } else {
+        document.body.classList.remove("light-mode");
+        toggleBtn.textContent = "🌙";
     }
 }
-applySavedTheme();
 
 function toggleTheme() {
-    document.body.classList.toggle("light-mode");
+    const toggleBtn = document.querySelector(".theme-toggle");
+    if (!toggleBtn) return;
 
+    document.body.classList.toggle("light-mode");
     const isLight = document.body.classList.contains("light-mode");
 
-    document.querySelector(".theme-toggle").textContent = isLight ? "☀️" : "🌙";
-
+    toggleBtn.textContent = isLight ? "☀️" : "🌙";
     localStorage.setItem("theme", isLight ? "light" : "dark");
-}
-
-function toggleNav() {
-    document.getElementById("navMenu").classList.toggle("show");
 }
 
 /* ============================================================
@@ -62,9 +67,11 @@ window.addEventListener("scroll", () => {
 /* ============================================================
    CERTIFICATE CAROUSEL
 ============================================================ */
-function moveCert(direction) {
-    const carousel = document.getElementById("certCarousel");
-    carousel.scrollBy({
+function slideCerts(direction) {
+    const slider = document.getElementById("certCarousel");
+    if (!slider) return;
+
+    slider.scrollBy({
         left: direction * 350,
         behavior: "smooth"
     });
@@ -74,17 +81,29 @@ function moveCert(direction) {
    PDF VIEWER
 ============================================================ */
 function openPDF(path) {
-    document.getElementById("pdfOverlay").style.display = "flex";
-    document.getElementById("pdfFrame").src = path;
+    const overlay = document.getElementById("pdfOverlay");
+    const frame = document.getElementById("pdfFrame");
+    if (!overlay || !frame) return;
+
+    overlay.style.display = "flex";
+    frame.src = path;
 }
 
 function closePDF() {
-    document.getElementById("pdfOverlay").style.display = "none";
-    document.getElementById("pdfFrame").src = "";
+    const overlay = document.getElementById("pdfOverlay");
+    const frame = document.getElementById("pdfFrame");
+    if (!overlay || !frame) return;
+
+    overlay.style.display = "none";
+    frame.src = "";
 }
 
 document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closePDF();
+    if (e.key === "Escape") {
+        closePDF();
+        closeProject();
+        closeZoom();
+    }
 });
 
 /* ============================================================
@@ -94,12 +113,15 @@ function feedbackSubmit(event) {
     event.preventDefault();
 
     const msg = document.getElementById("feedbackMsg");
-    msg.classList.add("show");
+    if (msg) {
+        msg.classList.add("show");
+    }
 
+    // Minimal delay, feels snappy
     setTimeout(() => {
-        msg.classList.remove("show");
+        if (msg) msg.classList.remove("show");
         event.target.submit();
-    }, 1500);
+    }, 800);
 }
 
 /* ============================================================
@@ -119,6 +141,8 @@ let isDeleting = false;
 
 function typeEffect() {
     const el = document.getElementById("typing");
+    if (!el) return;
+
     const text = typingText[tIndex];
 
     if (!isDeleting) {
@@ -144,7 +168,7 @@ window.addEventListener("load", typeEffect);
 /* ============================================================
    SCROLL REVEAL ANIMATIONS
 ============================================================ */
-const revealSections = document.querySelectorAll('.section');
+const revealSections = document.querySelectorAll(".section");
 
 function reveal() {
     revealSections.forEach(sec => {
@@ -166,135 +190,104 @@ if (galleryScroll) {
     galleryScroll.addEventListener("wheel", (evt) => {
         evt.preventDefault();
         galleryScroll.scrollLeft += evt.deltaY * 1.2;
-    });
+    }, { passive: false });
 }
 
 /* ============================================================
    AUTO-SCROLL CERTIFICATION SLIDER
 ============================================================ */
-
 let certInterval;
 const certCarousel = document.getElementById("certCarousel");
 
 function autoSlideCerts() {
+    if (!certCarousel) return;
+
     certInterval = setInterval(() => {
         certCarousel.scrollBy({ left: 300, behavior: "smooth" });
 
-        // If reached end → go back to start
         if (certCarousel.scrollLeft + certCarousel.clientWidth >= certCarousel.scrollWidth - 5) {
             certCarousel.scrollTo({ left: 0, behavior: "smooth" });
         }
-    }, 7000); // 7 seconds per slide
+    }, 7000); // 7 seconds
 }
 
-// Start auto scroll
-autoSlideCerts();
+if (certCarousel) {
+    autoSlideCerts();
 
-// Pause on hover
-certCarousel.addEventListener("mouseenter", () => clearInterval(certInterval));
-certCarousel.addEventListener("mouseleave", autoSlideCerts);
-
-// Swipe support (mobile)
-let startX = 0;
-
-certCarousel.addEventListener("touchstart", (e) => {
-    startX = e.touches[0].clientX;
-});
-
-certCarousel.addEventListener("touchend", (e) => {
-    let endX = e.changedTouches[0].clientX;
-
-    if (startX - endX > 50) {
-        // Swipe left
-        certCarousel.scrollBy({ left: 300, behavior: "smooth" });
-    }
-    if (endX - startX > 50) {
-        // Swipe right
-        certCarousel.scrollBy({ left: -300, behavior: "smooth" });
-    }
-});
+    certCarousel.addEventListener("mouseenter", () => clearInterval(certInterval));
+    certCarousel.addEventListener("mouseleave", autoSlideCerts);
+}
 
 /* ============================================================
-   ADVANCED HERO INTERACTION (3D FLOAT + TILT EFFECT)
+   ADVANCED HERO INTERACTION (SUBTLE TILT)
 ============================================================ */
-
 const heroImgContainer = document.querySelector(".profile-glow");
 
 document.addEventListener("mousemove", (e) => {
     if (!heroImgContainer) return;
 
-    const x = (window.innerWidth / 2 - e.clientX) / 40;
-    const y = (window.innerHeight / 2 - e.clientY) / 40;
+    const x = (window.innerWidth / 2 - e.clientX) / 60;
+    const y = (window.innerHeight / 2 - e.clientY) / 60;
 
-    heroImgContainer.style.transform = `translateY(-10px) rotateY(${x}deg) rotateX(${y}deg)`;
+    heroImgContainer.style.transform = `translateY(0px) rotateY(${x}deg) rotateX(${y}deg)`;
 });
 
-// Reset tilt smoothly
 document.addEventListener("mouseleave", () => {
     if (heroImgContainer) {
-        heroImgContainer.style.transform = "translateY(-10px) rotateY(0deg) rotateX(0deg)";
+        heroImgContainer.style.transform = "translateY(0px) rotateY(0deg) rotateX(0deg)";
     }
 });
 
 /* ============================================================
    FULLSCREEN IMAGE ZOOM VIEWER
 ============================================================ */
-
 const zoomOverlay = document.getElementById("imageZoom");
 const zoomImage = document.getElementById("zoomImage");
 
-// Open on click
-document.querySelectorAll(".zoomable").forEach(img => {
-    img.addEventListener("click", () => {
-        zoomImage.src = img.src;
-        zoomOverlay.style.display = "flex";
+if (zoomOverlay && zoomImage) {
+    document.querySelectorAll(".zoomable").forEach(img => {
+        img.addEventListener("click", () => {
+            zoomImage.src = img.src;
+            zoomOverlay.style.display = "flex";
+        });
     });
-});
 
-// Close functions
+    zoomOverlay.addEventListener("click", (e) => {
+        if (e.target.id === "imageZoom") closeZoom();
+    });
+
+    zoomOverlay.addEventListener("touchend", () => {
+        zoomImage.style.transform = "scale(1)";
+    });
+}
+
 function closeZoom() {
+    if (!zoomOverlay || !zoomImage) return;
     zoomOverlay.style.display = "none";
     zoomImage.src = "";
 }
 
-// Close on background click
-zoomOverlay.addEventListener("click", (e) => {
-    if (e.target.id === "imageZoom") closeZoom();
-});
-
-// Close with ESC key
-document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeZoom();
-});
-
-// Mobile pinch zoom support
-zoomImage.addEventListener("touchmove", (event) => {
-    event.preventDefault();
-    let scale = 1 + (event.touches.length - 1) * 0.5;
-    zoomImage.style.transform = `scale(${scale})`;
-}, { passive: false });
-
-// Reset zoom after close
-zoomOverlay.addEventListener("touchend", () => {
-    zoomImage.style.transform = "scale(1)";
-});
-
-
 /* ============================================================
-   NEON PARTICLES BACKGROUND ENGINE
+   NEON PARTICLES BACKGROUND ENGINE (LIGHTER)
 ============================================================ */
-
 const canvas = document.getElementById("particleCanvas");
-const ctx = canvas.getContext("2d");
+let ctx = null;
+if (canvas) {
+    ctx = canvas.getContext("2d");
+}
 
 let particles = [];
 
 function resizeCanvas() {
+    if (!canvas) return;
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 }
 resizeCanvas();
-window.addEventListener("resize", resizeCanvas);
+window.addEventListener("resize", () => {
+    resizeCanvas();
+    initParticles();
+});
 
 class Particle {
     constructor() {
@@ -302,15 +295,18 @@ class Particle {
     }
 
     reset() {
+        if (!canvas) return;
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
         this.size = Math.random() * 2 + 1;
-        this.speedX = (Math.random() - 0.5) * 0.6;
-        this.speedY = (Math.random() - 0.5) * 0.6;
-        this.glow = Math.random() * 12 + 8;
+        this.speedX = (Math.random() - 0.5) * 0.5;
+        this.speedY = (Math.random() - 0.5) * 0.5;
+        this.glow = Math.random() * 10 + 6;
     }
 
     update() {
+        if (!canvas) return;
+
         this.x += this.speedX;
         this.y += this.speedY;
 
@@ -321,8 +317,10 @@ class Particle {
     }
 
     draw() {
+        if (!ctx) return;
+
         ctx.beginPath();
-        ctx.fillStyle = "rgba(0,255,180,0.8)";
+        ctx.fillStyle = "rgba(0,255,180,0.78)";
         ctx.shadowBlur = this.glow;
         ctx.shadowColor = "#00ffb3";
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -331,8 +329,11 @@ class Particle {
 }
 
 function initParticles() {
+    if (!canvas) return;
+
     particles = [];
-    let count = Math.floor((canvas.width * canvas.height) / 9000); // auto density
+    // Reduced density for minimal / better performance
+    const count = Math.floor((canvas.width * canvas.height) / 16000);
 
     for (let i = 0; i < count; i++) {
         particles.push(new Particle());
@@ -340,6 +341,8 @@ function initParticles() {
 }
 
 function animateParticles() {
+    if (!canvas || !ctx) return;
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     particles.forEach(p => {
@@ -350,28 +353,26 @@ function animateParticles() {
     requestAnimationFrame(animateParticles);
 }
 
-initParticles();
-animateParticles();
-window.addEventListener("resize", initParticles);
+if (canvas) {
+    initParticles();
+    animateParticles();
+}
 
 /* ============================================================
    PROJECT MODAL SYSTEM
 ============================================================ */
-
-// Project Data (You can expand anytime)
 const projectData = {
     1: {
         title: "Pressure Vessel Radiographic Inspection",
         description: `
-            Performed complete RT inspection of weld joints on large industrial pressure vessels.
-            Responsibilities included:
-            • Film Interpretation (RTFI Level II)
-            • Finding internal discontinuities
+            Performed complete RT inspection of weld joints on industrial pressure vessels.
+            Responsibilities:
+            • Film interpretation (RTFI Level II)
+            • Identification of internal discontinuities
             • Preparing inspection reports
             • Client communication & safety compliance
         `
     },
-
     2: {
         title: "MT & PT Surface Crack Inspection",
         description: `
@@ -382,14 +383,13 @@ const projectData = {
             • Work performed in live industrial sites
         `
     },
-
     3: {
         title: "Structural Steel Radiographic Testing",
         description: `
             Performed radiographic testing on multi-story steel structures.
             • RT exposure setup
             • Film development & evaluation
-            • Reporting weld acceptance per ASME standards
+            • Reporting weld acceptance as per ASME standards
         `
     }
 };
@@ -399,6 +399,8 @@ function openProject(id) {
     const title = document.getElementById("projectTitle");
     const desc = document.getElementById("projectDescription");
 
+    if (!modal || !title || !desc || !projectData[id]) return;
+
     title.textContent = projectData[id].title;
     desc.innerHTML = projectData[id].description.replace(/\n/g, "<br>");
 
@@ -406,27 +408,16 @@ function openProject(id) {
 }
 
 function closeProject() {
-    document.getElementById("projectModal").style.display = "none";
+    const modal = document.getElementById("projectModal");
+    if (!modal) return;
+    modal.style.display = "none";
 }
 
-// Close on background click
-document.getElementById("projectModal").addEventListener("click", (e) => {
-    if (e.target.id === "projectModal") {
-        closeProject();
-    }
-});
-
-// Close with ESC key
-document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-        closeProject();
-    }
-});
-
-function slideCerts(direction) {
-    const slider = document.getElementById("certCarousel");
-    slider.scrollBy({ left: 350 * direction, behavior: "smooth" });
+const projectModal = document.getElementById("projectModal");
+if (projectModal) {
+    projectModal.addEventListener("click", (e) => {
+        if (e.target.id === "projectModal") {
+            closeProject();
+        }
+    });
 }
-
-
-
