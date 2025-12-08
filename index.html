@@ -119,7 +119,7 @@
 
         <div class="cert-container">
             <div class="cert-carousel-wrapper">
-                <button class="cert-arrow" onclick="moveCert(-1)">❮</button>
+               <button class="cert-arrow left" onclick="scrollCert(-1)">❮</button>
 
                 <div id="certCarousel">
                     <div class="cert-card" onclick="openPDF('assets/certificates/rtfi.pdf')">📄 RTFI Certificate</div>
@@ -131,7 +131,7 @@
                     <div class="cert-card" onclick="openPDF('assets/certificates/wah.pdf')">📄 WAH Certificate</div>
                 </div>
 
-                <button class="cert-arrow" onclick="moveCert(1)">❯</button>
+                <button class="cert-arrow right" onclick="scrollCert(1)">❯</button>
             </div>
 
             <!-- Auto-slider indicator -->
@@ -246,4 +246,5 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 
