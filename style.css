@@ -497,9 +497,9 @@ h2 {
     border: 1px solid rgba(255,255,255,0.14);
 }
 
-.pdf-container iframe {
+.pdf-container embed {
     width: 100%;
-    height: 520px;
+    height: 720px;   /* Larger height fixes the scrollbar */
     border: none;
 }
 
@@ -732,3 +732,4 @@ body.light-mode .btn:hover {
         right: 18px;
     }
 }
+
