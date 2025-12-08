@@ -387,27 +387,37 @@ h2 {
 }
 
 /* ============================================================
-   FLOATING CONTACT BUTTON
+   FLOATING CONTACT BUTTON — FIXED & CENTERED
 ============================================================ */
 .floating-contact {
     position: fixed;
-    right: 35px;
-    bottom: 35px;
+    right: 30px;
+    bottom: 30px;
+    width: 60px;
+    height: 60px;
     background: var(--accent);
-    width: 55px;
-    height: 55px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 0 25px rgba(0,255,180,0.4);
     cursor: pointer;
-    box-shadow: 0 0 30px var(--accent-soft);
-    transition: 0.3s ease;
+    z-index: 9999;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .floating-contact:hover {
     transform: scale(1.1);
+    box-shadow: 0 0 35px rgba(0,255,180,0.6);
 }
+
+.floating-contact img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    filter: brightness(0) invert(1); /* Keeps icon white */
+}
+
 
 /* ============================================================
    PDF OVERLAY
@@ -444,6 +454,25 @@ h2 {
 
 .pdf-close:hover {
     color: var(--accent);
+}
+
+/* ============================================================
+   CV VIEWER — FIXED SIZE ON ALL SCREENS
+============================================================ */
+.pdf-container {
+    width: 100%;
+    height: 750px; /* Increased height */
+    margin: 0 auto 40px auto;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(0,255,180,0.15);
+    background: rgba(255,255,255,0.03);
+}
+
+.pdf-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
 }
 
 /* ============================================================
@@ -492,3 +521,4 @@ h2 {
         height: 170px;
     }
 }
+
