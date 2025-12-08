@@ -81,19 +81,20 @@ h2 {
    SIDEBAR + MOBILE MENU
 ============================================================ */
 .sidebar {
-    width: 230px;
+    width: 180px;
     height: 100vh;
-    background: rgba(0,0,0,0.7);
-    border-right: 1px solid rgba(0,255,150,0.15);
+    background: rgba(0,0,0,0.55);
+    border-right: 1px solid rgba(0,255,150,0.10);
     position: fixed;
     left: 0;
     top: 0;
-    padding: 25px;
+    padding: 15px 14px;         /* reduced from 25px */
     backdrop-filter: blur(6px);
 
-    overflow-y: auto;    /* allows scrolling */
-    overflow-x: hidden;  /* prevents horizontal scrolling */
+    overflow-y: auto;
+    overflow-x: hidden;
 }
+
 
 .sidebar::-webkit-scrollbar {
     width: 6px;
@@ -108,6 +109,22 @@ h2 {
     background: transparent;
 }
 
+.sidebar ul {
+    margin-top: 10px;           /* reduce empty space at top */
+}
+
+.sidebar ul li {
+    margin-bottom: 6px;         /* reduce spacing between items */
+}
+
+.sidebar ul li a {
+    display: block;
+    padding: 6px 4px;           /* was too tall earlier */
+    font-size: 0.9rem;          /* slightly smaller */
+    color: #dcdcdc;
+    transition: 0.25s ease;
+}
+
 
 .logo {
     font-size: 38px;
@@ -115,6 +132,11 @@ h2 {
     text-align: center;
     color: var(--accent);
     margin-bottom: 45px;
+}
+
+.logo {
+    margin-bottom: 10px;     /* reduce wasted vertical space */
+    font-size: 1.6rem;       /* optional: smaller logo text */
 }
 
 .nav-link {
@@ -556,5 +578,6 @@ h2 {
     .contact-options { flex-direction: column; }
     .section { padding: 25px 18px; }
 }
+
 
 
