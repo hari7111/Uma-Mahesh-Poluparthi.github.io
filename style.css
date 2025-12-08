@@ -257,6 +257,8 @@ h2 {
     display: flex;
     align-items: center;
     gap: 25px;
+   position: relative;
+    z-index: 10;
 }
 
 #certCarousel {
@@ -307,6 +309,8 @@ h2 {
     border: none;
     cursor: pointer;
     transition: 0.25s ease;
+    z-index: 50 !important;      /* keep above cards */
+    position: relative;
 }
 
 .cert-arrow:hover {
@@ -765,6 +769,7 @@ body {
 body.fade-in {
     opacity: 1;
 }
+
 
 
 
