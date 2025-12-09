@@ -295,6 +295,13 @@ h2 {
     gap: 20px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+
+    /* HIDE UGLY SCROLL BAR */
+    scrollbar-width: none; /* Firefox */
+}
+
+#certCarousel::-webkit-scrollbar {
+    display: none; /* Chrome, Edge, Safari */
 }
 
 .cert-card {
@@ -727,3 +734,4 @@ h2 {
         right: 4%;
     }
 }
+
