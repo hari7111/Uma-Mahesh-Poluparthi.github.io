@@ -232,10 +232,13 @@ h2 {
 }
 
 .btn:hover {
-    background: var(--accent);
-    color: #111;
-    box-shadow: 0 0 22px rgba(0,255,180,0.6);
+    background: rgba(0,255,180,0.25); /* Soft neon tint, not full green */
+    color: #ffffff; /* White text stays visible */
+    font-weight: 600;
+    box-shadow: 0 0 18px rgba(0,255,180,0.5);
+    transform: translateY(-2px);
 }
+
 
 /* ============================================================
    SKILLS
@@ -749,4 +752,5 @@ a:hover {
     color: var(--accent) !important;
     text-decoration: none !important;
 }
+
 
