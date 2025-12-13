@@ -30,6 +30,8 @@ function applySavedTheme() {
     const saved = localStorage.getItem("theme");
     const toggleBtn = document.querySelector(".theme-toggle");
 
+    if (!toggleBtn) return;
+
     if (saved === "light") {
         document.body.classList.add("light-mode");
         toggleBtn.textContent = "☀️";
@@ -38,9 +40,13 @@ function applySavedTheme() {
     }
 }
 
+
 function toggleTheme() {
+    const toggleBtn = document.querySelector(".theme-toggle");
+    if (!toggleBtn) return;
+
     const isLight = document.body.classList.toggle("light-mode");
-    document.querySelector(".theme-toggle").textContent = isLight ? "☀️" : "🌙";
+    toggleBtn.textContent = isLight ? "☀️" : "🌙";
     localStorage.setItem("theme", isLight ? "light" : "dark");
 }
 

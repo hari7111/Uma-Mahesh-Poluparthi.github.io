@@ -16,6 +16,61 @@
     --dark: #0c0c0c;
 }
 
+/* ============================================================
+   LIGHT MODE THEME
+============================================================ */
+body.light-mode {
+    --dark: #f6f7f9;
+    --glass-bg: rgba(0,0,0,0.06);
+    --glass-border: rgba(0,0,0,0.15);
+    background: #f6f7f9;
+    color: #111;
+}
+
+body.light-mode h2,
+body.light-mode .nav-logo {
+    color: #00bfa5;
+}
+
+body.light-mode p,
+body.light-mode .nav-links a {
+    color: #222;
+}
+
+body.light-mode .btn {
+    color: #111;
+}
+
+body.light-mode .navbar {
+    background: rgba(255,255,255,0.75);
+}
+
+body.light-mode .cv-highlights li::marker {
+    color: #00bfa5;
+}
+
+body.light-mode .hero-title {
+    background: linear-gradient(90deg, #00bfa5, #008f7a);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+
+/* ============================================================
+   LIGHT MODE – CV & TEXT FIX
+============================================================ */
+body.light-mode .cv-details p,
+body.light-mode .cv-highlights li,
+body.light-mode .section p {
+    color: #222;
+}
+
+body.light-mode .cv-subtitle,
+body.light-mode h2 {
+    color: #00bfa5;
+}
+
+
 body {
     background: var(--dark);
     color: white;
@@ -135,6 +190,18 @@ body.fade-in { opacity: 1; }
     .hamburger {
         display: block;
     }
+}
+
+.theme-toggle {
+    cursor: pointer;
+    user-select: none;
+    font-size: 22px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.15);
+    opacity: 0.85;
 }
 
 /* ============================================================
