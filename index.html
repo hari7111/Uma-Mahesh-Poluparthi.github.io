@@ -208,31 +208,50 @@
 
         <h3 class="cv-subtitle">Core Strengths</h3>
         <ul class="cv-highlights">
-            <li>✔ Radiographic film interpretation & defect identification</li>
-            <li>✔ Skilled in MT/PT techniques for surface flaw evaluation</li>
-            <li>✔ Strong understanding of ASME & industrial safety protocols</li>
-            <li>✔ Ability to work independently in high-risk industrial environments</li>
-            <li>✔ Detailed reporting & technical documentation skills</li>
-        </ul>
+    <li>Radiographic film interpretation & defect identification</li>
+    <li>Skilled in MT/PT techniques for surface flaw evaluation</li>
+    <li>Strong understanding of ASME & industrial safety protocols</li>
+    <li>Ability to work independently in high-risk industrial environments</li>
+    <li>Detailed reporting & technical documentation skills</li>
+</ul>
 
-        <h3 class="cv-subtitle">Industry Expertise</h3>
-        <ul class="cv-highlights">
-            <li>• Oil & Gas Inspection</li>
-            <li>• Pressure Vessels & Boilers</li>
-            <li>• Structural Steel Fabrication</li>
-            <li>• Pipeline Welding Inspection</li>
-            <li>• Heavy Engineering Units</li>
-        </ul>
+<h3 class="cv-subtitle">Industry Expertise</h3>
+<ul class="cv-industry">
+    <li>Oil & Gas Inspection</li>
+    <li>Pressure Vessels & Boilers</li>
+    <li>Structural Steel Fabrication</li>
+    <li>Pipeline Welding Inspection</li>
+    <li>Heavy Engineering Units</li>
+</ul>
+
 
         <div class="cv-buttons">
-            <a href="assets/resume.pdf" download class="btn">Download CV</a>
-        </div>
+         <a href="assets/resume.pdf" download class="btn">
+        Download CV
+    </a>
+</div>
+
     </div>
 
     <!-- ==================== PDF VIEWER ===================== -->
-    <div class="cv-preview glass">
-        <embed src="assets/resume.pdf#zoom=75&toolbar=0" type="application/pdf">
+   <div class="cv-preview glass">
+
+    <!-- Desktop PDF Viewer -->
+    <embed
+        src="assets/resume.pdf#zoom=75&toolbar=0"
+        type="application/pdf"
+        class="cv-pdf-desktop">
+
+    <!-- Mobile Fallback -->
+    <div class="cv-pdf-mobile">
+        <p>📄 CV preview is not supported on mobile browsers.</p>
+        <a href="assets/resume.pdf" target="_blank" class="btn">
+            View / Download CV
+        </a>
     </div>
+
+</div>
+
 
 </section>
    
@@ -325,7 +344,7 @@
 <footer class="site-footer">
     © 2025 Uma Mahesh | Multi-NDT Technician  
     <br>
-    <span class="footer-version">v1.0.2 • Built with ❤️</span>
+    <span class="footer-version">v1.0.3 • Built with ❤️</span>
 </footer>
 
 

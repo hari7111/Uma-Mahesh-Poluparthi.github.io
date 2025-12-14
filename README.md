@@ -2,7 +2,7 @@
 
 ### RTFI Level II | MT Level II | PT Level II | Industrial Inspection Specialist
 
-![Version](https://img.shields.io/badge/version-v1.0.2-brightgreen)
+![Version](https://img.shields.io/badge/version-v1.0.3-brightgreen)
 ![Tech](https://img.shields.io/badge/Tech-HTML%20%7C%20CSS%20%7C%20JavaScript-blue)
 ![Status](https://img.shields.io/badge/Status-Stable-success)
 
@@ -10,67 +10,63 @@
 
 ## 📌 About
 
-This repository contains the source code for the **personal portfolio website of Uma Mahesh Poluparthi**, a certified **Multi-NDT Technician** with professional experience in industrial inspection and radiographic evaluation.
+This repository contains the source code for the **personal portfolio website of Uma Mahesh Poluparthi**, a certified **Multi-NDT Technician** with hands-on experience in industrial inspection and non-destructive testing.
 
-The website highlights:
-- Technical skills & certifications
-- Industrial inspection experience
-- Project work
-- Downloadable CV
-- Interactive UI with AI assistant
+The website highlights professional skills, certifications, inspection experience, project work, and provides an interactive way to view or download the CV.
 
 ---
 
 ## ✨ Features
 
 ### 🔹 Modern Glassmorphism UI
-- Neon tech design
+- Neon-tech design language
 - Fully responsive layout
-- Smooth animations & scroll reveal
-- Dark / Light mode toggle
+- Smooth animations and scroll reveal
+- Dark Mode & Light Mode support
 
 ### 🔹 Professional Sections
 - About & Skills
-- Certifications (PDF viewer)
-- Projects (modal view)
+- Certifications (PDF overlay viewer)
+- Projects (modal-based details)
 - Services
-- CV viewer
+- CV section (desktop viewer + mobile-safe fallback)
 - Feedback form
 - Contact section
 
 ### 🔹 AI Assistant
-- Answers queries about:
+- Local JavaScript-based AI assistant
+- Answers questions about:
   - Skills
   - Certifications
   - Experience
   - Projects
-  - CV & contact details
-- Built using local JavaScript logic (no API calls)
+  - CV and contact details
+- No external APIs used
 
-### 🔹 Additional Enhancements
+### 🔹 UX & Technical Enhancements
 - Particle animated background
 - Fullscreen image zoom
 - PDF overlay viewer
-- Feedback form with animated confirmation
-- SEO optimized (meta tags, sitemap, robots.txt)
+- Mobile-safe CV handling
+- SEO optimized (meta tags, sitemap.xml, robots.txt)
 
 ---
 
-## 🆕 What’s New in v1.0.2
+## 🆕 What’s New in v1.0.3
 
 ### 🐞 Bug Fixes
-- Fixed **mobile navbar appearing blank in Light Mode**
-- Removed duplicate page-load handlers
+- Fixed CV viewer showing blank white/black screen on mobile devices.
+- Resolved layout issues related to CV section buttons and spacing.
 
 ### ⚙️ Improvements
-- Improved JavaScript stability with null-safety checks
-- Stabilized certification auto-slider
-- Optimized particle background rendering
-- Minor code refactoring for maintainability
+- Added mobile-friendly CV fallback with “View / Download CV” button.
+- Retained embedded PDF viewer for desktop users.
+- Fixed duplicate list markers in CV section using CSS-based icons.
+- Improved overall mobile usability and cross-browser compatibility.
 
 ### 📱 Compatibility
-- Mobile & desktop fully supported
-- Dark Mode & Light Mode fully functional
+- Mobile (Android & iOS): fully supported
+- Desktop (Chrome, Edge, Firefox): fully supported
 - GitHub Pages deployment safe
 
 ---
@@ -118,7 +114,8 @@ The website highlights:
 
 | Version | Description |
 |------|------------|
-| v1.0.2 | Mobile Light Mode fix & stability improvements |
+| v1.0.3 | Mobile CV viewer compatibility & UI fixes |
+| v1.0.2 | Mobile Light Mode fix & JS stability improvements |
 | v1.0.1 | Initial public release |
 
 ---
@@ -140,7 +137,7 @@ You are free to use, modify, and distribute this project with attribution.
 
 ## 🔐 Security
 
-For security concerns, please refer to **SECURITY.md**  
+For security-related concerns, please refer to **SECURITY.md**  
 or contact: **admin@umamahesh-portfolio.com**
 
 ---
